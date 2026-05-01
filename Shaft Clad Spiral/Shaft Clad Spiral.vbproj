@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{AE52D462-47F2-4AA7-B1B4-791FA55D0185}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsApplication1</RootNamespace>
+    <AssemblyName>Shaft Clad Spiral</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Shaft Clad Spiral.ico</ApplicationIcon>
+    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BPARAM.Designer.vb">
+      <DependentUpon>BPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CONGRVPARAM.Designer.vb">
+      <DependentUpon>CONGRVPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CONGRVPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Connection.vb" />
+    <Compile Include="ConnectionSettings.Designer.vb">
+      <DependentUpon>ConnectionSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRPARAM.Designer.vb">
+      <DependentUpon>CRPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GRVPARAM.Designer.vb">
+      <DependentUpon>GRVPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GRVPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IObox.Designer.vb">
+      <DependentUpon>IObox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IObox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KEYPARAM.Designer.vb">
+      <DependentUpon>KEYPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="KEYPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Miscsettings.Designer.vb">
+      <DependentUpon>Miscsettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Miscsettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MotoCom32.vb" />
+    <Compile Include="MPosıtıonupload.Designer.vb">
+      <DependentUpon>MPosıtıonupload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MPosıtıonupload.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My\MyApplication.vb" />
+    <Compile Include="My\MyComputer.vb" />
+    <Compile Include="My\MyProject.vb" />
+    <Compile Include="My\MySettings.Designer.vb">
+      <DependentUpon>MySettings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="My\MySettingsProperty.vb" />
+    <Compile Include="My\Resources\Resources.vb" />
+    <Compile Include="PLANPARAM.Designer.vb">
+      <DependentUpon>PLANPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PLANPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POCKETPARAM.Designer.vb">
+      <DependentUpon>POCKETPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POCKETPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Positioncal.vb" />
+    <Compile Include="posturecalc.vb" />
+    <Compile Include="Posıtıonupload.Designer.vb">
+      <DependentUpon>Posıtıonupload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Posıtıonupload.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPARAM.Designer.vb">
+      <DependentUpon>PPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="processparam.vb" />
+    <Compile Include="Processsetup.Designer.vb">
+      <DependentUpon>Processsetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Processsetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returnhome.vb" />
+    <Compile Include="SPARAM.Designer.vb">
+      <DependentUpon>SPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THREEDCLADPARAM.Designer.vb">
+      <DependentUpon>THREEDCLADPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="THREEDCLADPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Valuevalidate.vb" />
+    <Compile Include="VPARAM.Designer.vb">
+      <DependentUpon>VPARAM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VPARAM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BPARAM.resources" />
+    <EmbeddedResource Include="CONGRVPARAM.resources" />
+    <EmbeddedResource Include="ConnectionSettings.resources" />
+    <EmbeddedResource Include="CRPARAM.resources" />
+    <EmbeddedResource Include="Form1.resources" />
+    <EmbeddedResource Include="GRVPARAM.resources" />
+    <EmbeddedResource Include="IObox.resources" />
+    <EmbeddedResource Include="KEYPARAM.resources" />
+    <EmbeddedResource Include="Miscsettings.resources" />
+    <EmbeddedResource Include="MPosıtıonupload.resources" />
+    <EmbeddedResource Include="PLANPARAM.resources" />
+    <EmbeddedResource Include="POCKETPARAM.resources" />
+    <EmbeddedResource Include="Posıtıonupload.resources" />
+    <EmbeddedResource Include="PPARAM.resources" />
+    <EmbeddedResource Include="Processsetup.resources" />
+    <EmbeddedResource Include="Resources.resources" />
+    <EmbeddedResource Include="SPARAM.resources" />
+    <EmbeddedResource Include="THREEDCLADPARAM.resources" />
+    <EmbeddedResource Include="VPARAM.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My\MySettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MySettings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
