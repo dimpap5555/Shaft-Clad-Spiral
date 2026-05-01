@@ -467,5 +467,47 @@
 
 		' Token: 0x040000A9 RID: 169
 		Private components As Global.System.ComponentModel.IContainer
+
+		Friend WithEvents MenuStrip1 As MenuStrip
+		Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents OpenProjectToolStripMenuItem1 As ToolStripMenuItem
+		Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents SaveAsToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents CloseProjectToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents processcycle As ComboBox
+		Friend WithEvents Label1 As Label
+		Friend WithEvents HelpToolStripMenuItem1 As ToolStripMenuItem
+		Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents Quitbtn As Button
+		Friend WithEvents connect As Button
+		Friend WithEvents GroupBox1 As GroupBox
+		Friend WithEvents GroupBox2 As GroupBox
+		Friend WithEvents hold As Button
+		Friend WithEvents run As Button
+		Friend WithEvents Download As Button
+		Friend WithEvents GroupBox3 As GroupBox
+		Friend WithEvents GroupBox4 As GroupBox
+		Friend WithEvents Procsetupbtn As Button
+		Friend WithEvents ConnectionSettingsToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents MisselaneousSettingsToolStripMenuItem As ToolStripMenuItem
+		Friend WithEvents Timer1 As Timer
+		Friend WithEvents Countdown As Label
+		Friend WithEvents Offlinecheck As CheckBox
+		Friend WithEvents Progress As Label
+		Friend WithEvents ProgressBar As ProgressBar
+		Friend WithEvents Label7 As Label
+		Friend WithEvents Label6 As Label
+		Friend WithEvents RZCoord As TextBox
+		Friend WithEvents RYCoord As TextBox
+		Friend WithEvents Label5 As Label
+		Friend WithEvents RXCoord As TextBox
+		Friend WithEvents Label4 As Label
+		Friend WithEvents ZCoord As TextBox
+		Friend WithEvents Label3 As Label
+		Friend WithEvents YCoord As TextBox
+		Friend WithEvents Label2 As Label
+		Friend WithEvents XCoord As TextBox
 	End Class
 End Namespace
