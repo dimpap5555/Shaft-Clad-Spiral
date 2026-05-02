@@ -20,7 +20,7 @@ Namespace WindowsApplication1.My
 		<MethodImpl(MethodImplOptions.NoInlining Or MethodImplOptions.NoOptimization)>
 		Friend Shared Sub Main(Args As String())
 			Try
-				Global.System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(WindowsFormsApplicationBase.UseCompatibleTextRendering)
+				Application.SetCompatibleTextRenderingDefault(WindowsFormsApplicationBase.UseCompatibleTextRendering)
 			Finally
 			End Try
 			MyProject.Application.Run(Args)
