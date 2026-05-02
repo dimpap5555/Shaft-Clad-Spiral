@@ -6,7 +6,7 @@ Imports System.Diagnostics
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.CompilerServices
 
-Namespace WindowsApplication1.My
+Namespace My
 	' Token: 0x02000016 RID: 22
 	<CompilerGenerated()>
 	<EditorBrowsable(EditorBrowsableState.Advanced)>

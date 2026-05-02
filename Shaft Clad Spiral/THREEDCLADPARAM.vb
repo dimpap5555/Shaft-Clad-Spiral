@@ -1060,9 +1060,9 @@ Namespace WindowsApplication1
 		Private Sub CurrPosStat_Click(sender As Object, e As EventArgs)
 			Dim form2rect As Rectangle = New Rectangle(50, 100, 845, 723)
 			If Me.CurrPosStat.Checked Then
-				MyProject.Forms.MPosıtıonupload.DesktopBounds = form2rect
-				MyProject.Forms.MPosıtıonupload.ShowDialog()
-				If MyProject.Forms.MPosıtıonupload.DialogResult = DialogResult.OK Then
+				Global.WindowsApplication1.My.MyProject.Forms.MPosıtıonupload.DesktopBounds = form2rect
+				Global.WindowsApplication1.My.MyProject.Forms.MPosıtıonupload.ShowDialog()
+				If Global.WindowsApplication1.My.MyProject.Forms.MPosıtıonupload.DialogResult = DialogResult.OK Then
 					Positioncal.CurrPos = 1S
 					If Positioncal.ConstBeamFlg <> 0S Then
 						Positioncal.CladWidth = Positioncal.Position(9, 0)

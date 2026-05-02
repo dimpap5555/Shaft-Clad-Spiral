@@ -4,7 +4,7 @@ Imports System.ComponentModel
 Imports System.Diagnostics
 Imports Microsoft.VisualBasic.Devices
 
-Namespace WindowsApplication1.My
+Namespace My
 	' Token: 0x02000003 RID: 3
 	<EditorBrowsable(EditorBrowsableState.Never)>
 	<GeneratedCode("MyTemplate", "8.0.0.0")>
