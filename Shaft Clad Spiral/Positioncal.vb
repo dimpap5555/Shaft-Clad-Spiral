@@ -2629,8 +2629,7 @@ Namespace WindowsApplication1
 			Normal(1) = -Vector1(0) * Vector2(2) + Vector2(0) * Vector1(2)
 			Normal(2) = Vector1(0) * Vector2(1) - Vector2(0) * Vector1(1)
 			Modulus = Math.Sqrt(Math.Pow(Normal(0), 2.0) + Math.Pow(Normal(1), 2.0) + Math.Pow(Normal(2), 2.0))
-			Dim CrosProd As Double
-			Return CrosProd
+			Return Modulus
 		End Function
 
 		' Token: 0x0600056C RID: 1388 RVA: 0x00015B34 File Offset: 0x00013F34
@@ -2668,7 +2667,7 @@ Namespace WindowsApplication1
 			Dim Rb As Double(,) = New Double(2, 2) {}
 			Dim a2d As Object(,) = New Object(4, 4) {}
 			Dim Tiltnormalrot As Double() = New Double(2) {}
-			Dim FindDist As Double
+			Dim distance As Double
 			If Stationangle <> Tiltangle Then
 				Dim num As Double = 0.0
 				Dim array As Double(,) = Positioncal.Rotmat(Positioncal.Tiltnormal, Positioncal.Spindnormalhor, num)
@@ -2683,11 +2682,11 @@ Namespace WindowsApplication1
 				Pr(0) = R(0, 0) * P(0) + R(0, 1) * P(1) + R(0, 2) * P(2)
 				Pr(1) = R(1, 0) * P(0) + R(1, 1) * P(1) + R(1, 2) * P(2)
 				Pr(2) = R(2, 0) * P(0) + R(2, 1) * P(1) + R(2, 2) * P(2)
-				FindDist = Math.Sqrt(Math.Pow(Pr(0), 2.0) + Math.Pow(Pr(2), 2.0))
+				distance = Math.Sqrt(Math.Pow(Pr(0), 2.0) + Math.Pow(Pr(2), 2.0))
 			Else
-				FindDist = Math.Sqrt(Math.Pow(P(0), 2.0) + Math.Pow(P(2), 2.0))
+				distance = Math.Sqrt(Math.Pow(P(0), 2.0) + Math.Pow(P(2), 2.0))
 			End If
-			Return FindDist
+			Return distance
 		End Function
 
 		' Token: 0x0600056F RID: 1391 RVA: 0x00016068 File Offset: 0x00014468
@@ -2747,7 +2746,7 @@ Namespace WindowsApplication1
 		' Token: 0x06000571 RID: 1393 RVA: 0x00016208 File Offset: 0x00014608
 		Public Function SavePositionFile(filename As String, datatable As DataTable, UF As String) As Short
 			Dim sepChar As String = ","
-			Dim SavePositionFile As Short
+			Dim saveResult As Short
 			Try
 				Dim writer As StreamWriter = New StreamWriter(filename, False)
 				writer.Write(UF + vbCrLf)
@@ -2760,36 +2759,30 @@ Namespace WindowsApplication1
 					i += 1
 				End While
 				writer.Write(datatable.Columns(i).ColumnName + vbCrLf)
-				Try
-					For Each obj As Object In datatable.Rows
-						Dim row As DataRow = CType(obj, DataRow)
-						Dim array As Object() = row.ItemArray
-						Dim num3 As Integer = 0
-						Dim num4 As Integer = array.Length - 2
-						i = num3
-						While i <= num4
-							writer.Write(array(i).ToString() + sepChar)
-							i += 1
-						End While
-						writer.Write(array(i).ToString() + vbCrLf)
-					Next
-				Finally
-					Dim enumerator As IEnumerator
-					If TypeOf enumerator Is IDisposable Then
-						TryCast(enumerator, IDisposable).Dispose()
-					End If
-				End Try
+				For Each obj As Object In datatable.Rows
+					Dim row As DataRow = CType(obj, DataRow)
+					Dim array As Object() = row.ItemArray
+					Dim num3 As Integer = 0
+					Dim num4 As Integer = array.Length - 2
+					i = num3
+					While i <= num4
+						writer.Write(array(i).ToString() + sepChar)
+						i += 1
+					End While
+					writer.Write(array(i).ToString() + vbCrLf)
+				Next
 				writer.Close()
-				SavePositionFile = 1S
+				saveResult = 1S
 			Catch ex As Exception
 				Interaction.MsgBox("Error while saving file", MsgBoxStyle.Critical, Nothing)
-				SavePositionFile = -1S
+				saveResult = -1S
 			End Try
-			Return SavePositionFile
+			Return saveResult
 		End Function
 
 		' Token: 0x06000572 RID: 1394 RVA: 0x00016378 File Offset: 0x00014778
 		Public Function LoadPositionFile(filename As String, ByRef datatable As DataTable, ByRef uf As String, ByRef statpos As Short, ByRef index As Integer) As Short
+			Dim loadResult As Short = -1S
 			' The following expression was wrapped in a checked-statement
 			Try
 				Dim fs As StreamReader = New StreamReader(filename)
@@ -2828,11 +2821,11 @@ Namespace WindowsApplication1
 				ElseIf Operators.CompareString(left, "UF5", False) = 0 Then
 					Positioncal.StationPosition = 5
 				End If
+				loadResult = 1S
 			Catch ex2 As Exception
 				Interaction.MsgBox(ex2.Message, MsgBoxStyle.OkOnly, Nothing)
 			End Try
-			Dim LoadPositionFile As Short
-			Return LoadPositionFile
+			Return loadResult
 		End Function
 
 		' Token: 0x040001DA RID: 474
