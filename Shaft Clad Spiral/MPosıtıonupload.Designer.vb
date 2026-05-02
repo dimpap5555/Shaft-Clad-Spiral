@@ -387,7 +387,7 @@
 			size = New Global.System.Drawing.Size(78, 30)
 			constBeam2.Size = size
 			Me.ConstBeam.TabIndex = 13
-			Me.ConstBeam.Text = "Constant " & vbCrLf & "Clad Width"
+			Me.ConstBeam.Text = "Constant " & Global.System.Environment.NewLine & "Clad Width"
 			Me.ConstBeam.UseVisualStyleBackColor = True
 			Me.Label11.AutoSize = True
 			Dim label17 As Global.System.Windows.Forms.Control = Me.Label11
