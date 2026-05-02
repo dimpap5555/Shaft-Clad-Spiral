@@ -459,7 +459,7 @@
 			size = New Global.System.Drawing.Size(128, 44)
 			spinDirMov2.Size = size
 			Me.SpinDirMov.TabIndex = 28
-			Me.SpinDirMov.Text = "Spindle Circ." & vbCrLf & " Direction"
+			Me.SpinDirMov.Text = "Spindle Circ." & Global.System.Environment.NewLine & " Direction"
 			Me.SpinDirMov.UseVisualStyleBackColor = True
 			Me.ZDirMov.AutoSize = True
 			Me.ZDirMov.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 12F, Global.System.Drawing.FontStyle.Bold, Global.System.Drawing.GraphicsUnit.Point, 161)
@@ -572,7 +572,7 @@
 			size = New Global.System.Drawing.Size(128, 44)
 			spinDirArr2.Size = size
 			Me.SpinDirArr.TabIndex = 28
-			Me.SpinDirArr.Text = "Spindle Circ." & vbCrLf & " Direction"
+			Me.SpinDirArr.Text = "Spindle Circ." & Global.System.Environment.NewLine & " Direction"
 			Me.SpinDirArr.UseVisualStyleBackColor = True
 			Me.ZDirArr.AutoSize = True
 			Me.ZDirArr.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 12F, Global.System.Drawing.FontStyle.Bold, Global.System.Drawing.GraphicsUnit.Point, 161)
