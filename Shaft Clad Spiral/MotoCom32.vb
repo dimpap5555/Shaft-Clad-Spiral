@@ -4,7 +4,7 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000013 RID: 19
-	Friend NotInheritable Module MotoCom32
+	Friend Module MotoCom32
 		' Token: 0x0600037E RID: 894
 		Public Declare Ansi Function BscCancel Lib "MotoCom32" Alias "_BscCancel@4" (nCid As Short) As Short
 

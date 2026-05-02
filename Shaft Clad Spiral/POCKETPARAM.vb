@@ -11,7 +11,6 @@ Imports WindowsApplication1.My
 
 Namespace WindowsApplication1
 	' Token: 0x0200001A RID: 26
-	<DesignerGenerated()>
 	Public Partial Class POCKETPARAM
 		Inherits Form
 

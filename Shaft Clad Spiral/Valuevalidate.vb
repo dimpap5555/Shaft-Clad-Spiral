@@ -38,7 +38,7 @@ Namespace WindowsApplication1
 		' Token: 0x14000001 RID: 1
 		' (add) Token: 0x0600063C RID: 1596 RVA: 0x00016A54 File Offset: 0x00014E54
 		' (remove) Token: 0x0600063D RID: 1597 RVA: 0x00016A70 File Offset: 0x00014E70
-		<DebuggerNonUserCode()>
+		' (remove) Token: 0x0600063D RID: 1597 RVA: 0x00016A70 File Offset: 0x00014E70
 		Public Event DataChanged As Valuevalidate.DataChangedEventHandler
 
 		' Token: 0x04000290 RID: 656

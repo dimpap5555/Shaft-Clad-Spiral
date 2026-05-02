@@ -9,7 +9,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x0200000C RID: 12
-	<DesignerGenerated()>
 	Public Partial Class ConnectionSettings
 		Inherits Form
 

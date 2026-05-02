@@ -4,7 +4,7 @@ Imports Microsoft.VisualBasic.FileIO
 
 Namespace WindowsApplication1
 	' Token: 0x0200001D RID: 29
-	Friend NotInheritable Module posturecalc
+	Friend Module posturecalc
 		' Token: 0x060005B0 RID: 1456 RVA: 0x00016518 File Offset: 0x00014918
 		Public Sub posture(obstdia As Double, procdia As Double, obstdist As Double, endpathdist As Double)
 			Dim headcoordsx As Double() = New Double(102) {}
@@ -14,7 +14,7 @@ Namespace WindowsApplication1
 			Dim line As Integer
 			Using inputfile As TextFieldParser = New TextFieldParser("c:\documents and settings\tech2\desktop\test.txt")
 				inputfile.TextFieldType = FieldType.Delimited
-				inputfile.SetDelimiters(New String() { "  " })
+				inputfile.SetDelimiters(New String() {"  "})
 				While Not inputfile.EndOfData
 					Dim currentrow As String() = inputfile.ReadFields()
 					Dim row As Integer = 0

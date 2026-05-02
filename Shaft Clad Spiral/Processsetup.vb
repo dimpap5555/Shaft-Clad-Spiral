@@ -10,7 +10,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x0200001F RID: 31
-	<DesignerGenerated()>
 	Public Partial Class Processsetup
 		Inherits Form
 
@@ -355,7 +354,7 @@ Namespace WindowsApplication1
 		' Token: 0x170001DF RID: 479
 		' (get) Token: 0x060005D5 RID: 1493 RVA: 0x0004BDE4 File Offset: 0x0004A1E4
 		' (set) Token: 0x060005D6 RID: 1494 RVA: 0x0004BDF8 File Offset: 0x0004A1F8
-		Private Overridable Property ProcValid As Valuevalidate
+		Private Property ProcValid As Valuevalidate
 			<DebuggerNonUserCode()>
 			Get
 				Return Me._ProcValid

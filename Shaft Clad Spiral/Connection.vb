@@ -4,7 +4,7 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x0200000B RID: 11
-	Friend NotInheritable Module Connection
+	Friend Module Connection
 		' Token: 0x0600015A RID: 346 RVA: 0x00002DF8 File Offset: 0x000011F8
 		Public Function Ms_BscOpenComm(strIPaddr As String, path As String, ether_mode As Integer, hwnd As Long) As Integer
 			Connection.nCid = CInt(MotoCom32.BscOpen(path, 256S))

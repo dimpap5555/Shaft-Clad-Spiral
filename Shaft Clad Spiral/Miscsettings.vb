@@ -10,7 +10,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000012 RID: 18
-	<DesignerGenerated()>
 	Public Partial Class Miscsettings
 		Inherits Form
 

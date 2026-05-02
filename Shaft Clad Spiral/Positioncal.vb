@@ -10,15 +10,15 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x0200001B RID: 27
-	Friend NotInheritable Module Positioncal
+	Friend Module Positioncal
 		' Token: 0x06000562 RID: 1378 RVA: 0x00003120 File Offset: 0x00001520
 		<MethodImpl(MethodImplOptions.NoInlining Or MethodImplOptions.NoOptimization)>
 		Public Sub ThreeDclad(ByRef width As Double, ByRef pitch As Double, processspeed As Double, ByRef tooloffset As Double, ByRef stationposition As Integer, ByRef movdir As Short, ByRef arrdir As Short, ByRef claddingdir As Short, ByRef meanderamp As Double, ByRef meanderpitch As Double, ByRef meanderflg As Short, ByRef copies As Short, ByRef arrayrecptc As Double, ByRef arrayangptc As Double, hwnd As Integer)
 			Dim positions As Double(,) = New Double(6, 11) {}
 			Dim expositions As Double(,) = New Double(6, 11) {}
 			Dim temppos As Double() = New Double(Positioncal.Position.GetLength(1) - 1 + 1 - 1) {}
-			Dim array As Double() = New Double() { 0.0, 0.0, 0.0 }
-			array = New Double() { 0.0, 0.0, 0.0 }
+			Dim array As Double() = New Double() {0.0, 0.0, 0.0}
+			array = New Double() {0.0, 0.0, 0.0}
 			Dim currpos As Double() = New Double(2) {}
 			Dim synchro As String = ""
 			Dim interp As String = ""
@@ -31,9 +31,9 @@ Namespace WindowsApplication1
 				Case 1
 					stationangle = 0.0
 				Case 2
-					stationangle = 0.5235987755982988
+					stationangle = 0.52359877559829882
 				Case 3
-					stationangle = 0.7853981633974483
+					stationangle = 0.78539816339744828
 				Case 4
 					stationangle = 1.0471975511965976
 				Case 5
@@ -53,7 +53,7 @@ Namespace WindowsApplication1
 					passes = Math.Ceiling(passes)
 					effectivepitch = (Positioncal.Width1 - Positioncal.Position(9, 0) - 2.0 * meanderamp) / passes
 				End If
-				If(effectivepitch - pitch) / pitch > 0.1 Then
+				If (effectivepitch - pitch) / pitch > 0.1 Then
 					passes += 1.0
 					effectivepitch = (Positioncal.Width1 - Positioncal.Position(9, 0) - 2.0 * meanderamp) / passes
 				End If
@@ -124,12 +124,12 @@ Namespace WindowsApplication1
 			End Select
 			Dim Rx As Double
 			If Positioncal.Position(3, 0) > 0.0 Then
-				Rx = (Positioncal.Position(3, 0) - 90.0) * 3.141592653589793 / 180.0
+				Rx = (Positioncal.Position(3, 0) - 90.0) * 3.1415926535897931 / 180.0
 			Else
-				Rx = (Positioncal.Position(3, 0) + 180.0 + 90.0) * 3.141592653589793 / 180.0
+				Rx = (Positioncal.Position(3, 0) + 180.0 + 90.0) * 3.1415926535897931 / 180.0
 			End If
-			Dim Ry As Double = Positioncal.Position(4, 0) * 3.141592653589793 / 180.0
-			Dim Rz As Double = Positioncal.Position(5, 0) * 3.141592653589793 / 180.0
+			Dim Ry As Double = Positioncal.Position(4, 0) * 3.1415926535897931 / 180.0
+			Dim Rz As Double = Positioncal.Position(5, 0) * 3.1415926535897931 / 180.0
 			positions(0, 0) = Positioncal.Position(0, 0) + Positioncal.IniXAxisOffset
 			positions(1, 0) = Positioncal.Position(1, 0) + Positioncal.IniYAxisOffset
 			positions(2, 0) = Positioncal.Position(2, 0) + Positioncal.IniZAxisOffset
@@ -164,16 +164,16 @@ Namespace WindowsApplication1
 					Dim pointNo As Integer = Positioncal.PointNo
 					For k As Integer = num5 To pointNo
 
+						' The following expression was wrapped in a checked-expression
+						If Positioncal.Position(3, k - 1) > 0.0 Then
 							' The following expression was wrapped in a checked-expression
-							If Positioncal.Position(3, k - 1) > 0.0 Then
-								' The following expression was wrapped in a checked-expression
-								Rx = (Positioncal.Position(3, k - 1) - 90.0) * 3.141592653589793 / 180.0
-							Else
-								' The following expression was wrapped in a checked-expression
-								Rx = (Positioncal.Position(3, k - 1) + 180.0 + 90.0) * 3.141592653589793 / 180.0
-							End If
-							Ry = Positioncal.Position(4, k - 1) * 3.141592653589793 / 180.0
-							Rz = Positioncal.Position(5, k - 1) * 3.141592653589793 / 180.0
+							Rx = (Positioncal.Position(3, k - 1) - 90.0) * 3.1415926535897931 / 180.0
+						Else
+							' The following expression was wrapped in a checked-expression
+							Rx = (Positioncal.Position(3, k - 1) + 180.0 + 90.0) * 3.1415926535897931 / 180.0
+						End If
+						Ry = Positioncal.Position(4, k - 1) * 3.1415926535897931 / 180.0
+						Rz = Positioncal.Position(5, k - 1) * 3.1415926535897931 / 180.0
 
 						temppos(0) = Positioncal.Position(0, k - 1)
 						temppos(1) = Positioncal.Position(1, k - 1)
@@ -190,10 +190,10 @@ Namespace WindowsApplication1
 						Dim num7 As Integer = CInt(Math.Round(CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0))
 						Dim num8 As Double = Positioncal.Position(7, k - 1)
 
-							' The following expression was wrapped in a checked-expression
-							Dim num9 As Double = CDbl((CInt(spinddirmovflg) * (j - 1) * CInt(Positioncal.Overlaydir))) * effectivepitch
-							Dim num10 As Double = Positioncal.Position(6, k - 1) * 3.141592653589793 / 180.0
-							array2(num6, num7) = (num8 + num9 / Positioncal.FindDist(temppos, num10, stationangle) * 180.0 / 3.141592653589793 + CDbl((CInt(spinddirarrflg) * (i - 1) * CInt(Positioncal.Arraydir))) * arrayangptc) / 360.0 * 331776.0
+						' The following expression was wrapped in a checked-expression
+						Dim num9 As Double = CDbl((CInt(spinddirmovflg) * (j - 1) * CInt(Positioncal.Overlaydir))) * effectivepitch
+						Dim num10 As Double = Positioncal.Position(6, k - 1) * 3.1415926535897931 / 180.0
+						array2(num6, num7) = (num8 + num9 / Positioncal.FindDist(temppos, num10, stationangle) * 180.0 / 3.1415926535897931 + CDbl((CInt(spinddirarrflg) * (i - 1) * CInt(Positioncal.Arraydir))) * arrayangptc) / 360.0 * 331776.0
 
 					Next
 				Next
@@ -236,7 +236,7 @@ Namespace WindowsApplication1
 			Else
 				headertxt += "0,2,0,2" & vbCrLf
 			End If
-			headertxt = String.Concat(New String() { headertxt, "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER ", stationposition.ToString("#"), vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {headertxt, "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER ", stationposition.ToString("#"), vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num11 As Integer = 0
 			Dim num12 As Integer = Totalpoints + 2
 			Dim j As Integer
@@ -266,10 +266,10 @@ Namespace WindowsApplication1
 				Dim num13 As Integer = 0
 				Dim num14 As Integer = Totalpoints + 3
 				For ind As Integer = num13 To num14
-					headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), expositions(0, ind).ToString("#;-#;0"), ",", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf })
+					headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), expositions(0, ind).ToString("#;-#;0"), ",", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf})
 				Next
 			End If
-			headertxt = String.Concat(New String() { headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf })
+			headertxt = String.Concat(New String() {headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf})
 			If Positioncal.Movementtype < 4S Then
 				headertxt += "///GROUP2 ST1" & vbCrLf
 			End If
@@ -329,14 +329,14 @@ Namespace WindowsApplication1
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20"})
 			If Positioncal.Movementtype < 4S Then
 				mainprogtxt += " +MOVJ EC00001 VJ=100.00" & vbCrLf
 			Else
 				mainprogtxt += vbCrLf
 			End If
 			mainprogtxt += "WAIT IN#(1)=ON T=5.00" & vbCrLf
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf & "MOVL C", 2.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#") })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf & "MOVL C", 2.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#")})
 			If Positioncal.Movementtype < 4S Then
 				mainprogtxt = mainprogtxt + " +MOVJ EC" + 2.ToString("0000#") + vbCrLf
 			Else
@@ -355,92 +355,92 @@ Namespace WindowsApplication1
 					k = num21
 					While k <= pointNo2
 
+						' The following expression was wrapped in a checked-expression
+						power = 0.0025 * Positioncal.Position(8, k - 1) + -1.1111
+						Dim feed As Double = 0.1 * Positioncal.PowderFeed
+						Dim beamdia As Double
+						Dim meanderamploc As Double
+						If Positioncal.ConstBeamFlg <> 1S Then
+							beamdia = 2.3596 * Positioncal.CladWidth + -4.4599
+							If meanderflg = 1S Then
+								If k > 1 Then
+									processspeedloc = processspeed * meanderpitch / (4.0 * meanderamploc)
+								End If
+								meanderamploc = (Positioncal.Position(9, k - 1) - Positioncal.CladWidth) / 2.0
+							Else
+								processspeedloc = processspeed
+							End If
+						Else
 							' The following expression was wrapped in a checked-expression
-							power = 0.0025 * Positioncal.Position(8, k - 1) + -1.1111
-							Dim feed As Double = 0.1 * Positioncal.PowderFeed
-							Dim beamdia As Double
-							Dim meanderamploc As Double
-							If Positioncal.ConstBeamFlg <> 1S Then
-								beamdia = 2.3596 * Positioncal.CladWidth + -4.4599
-								If meanderflg = 1S Then
-									If k > 1 Then
-										processspeedloc = processspeed * meanderpitch / (4.0 * meanderamploc)
-									End If
-									meanderamploc = (Positioncal.Position(9, k - 1) - Positioncal.CladWidth) / 2.0
-								Else
-									processspeedloc = processspeed
+							beamdia = 2.3596 * Positioncal.Position(9, k - 1) + -4.4599
+							If meanderflg = 1S Then
+								meanderamploc = meanderamp
+								processspeedloc = processspeed * meanderpitch / (4.0 * meanderamploc)
+							Else
+								processspeedloc = processspeed
+							End If
+						End If
+						Dim meanderamptemp As Double
+						If k = 1 And j = 1 And i = 1 Then
+							meanderamptemp = 0.0
+						End If
+						meanderfreq = processspeed / (4.0 * meanderamploc)
+						If k = 1 Then
+							' The following expression was wrapped in a checked-expression
+							' The following expression was wrapped in a checked-expression
+							mainprogtxt = String.Concat(New String() {mainprogtxt, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#")})
+							If Positioncal.Movementtype < 4S Then
+								' The following expression was wrapped in a checked-expression
+								' The following expression was wrapped in a checked-expression
+								mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
+							Else
+								mainprogtxt += vbCrLf
+							End If
+							mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf & "ARCSET AN3=", beamdia.ToString("#0.0"), vbCrLf})
+							If meanderflg = 1S Then
+								If meanderamploc <> meanderamptemp Then
+									' The following expression was wrapped in a checked-expression
+									' The following expression was wrapped in a unchecked-expression
+									' The following expression was wrapped in a unchecked-expression
+									mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamploc * 1000.0))), vbCrLf})
+								End If
+								mainprogtxt = mainprogtxt + synchro + "WVON WEV#(1)" & vbCrLf
+							End If
+						ElseIf k > 1 And k < Positioncal.PointNo Then
+							' The following expression was wrapped in a checked-expression
+							' The following expression was wrapped in a checked-expression
+							mainprogtxt = String.Concat(New String() {mainprogtxt, synchro, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", processspeedloc.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#")})
+							If Positioncal.Movementtype < 4S Then
+								' The following expression was wrapped in a checked-expression
+								' The following expression was wrapped in a checked-expression
+								mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
+							Else
+								mainprogtxt += vbCrLf
+							End If
+							If meanderflg = 1S Then
+								mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
+								If meanderamploc <> meanderamptemp Then
+									' The following expression was wrapped in a checked-expression
+									' The following expression was wrapped in a unchecked-expression
+									' The following expression was wrapped in a unchecked-expression
+									mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamploc * 1000.0))), vbCrLf})
 								End If
 							Else
-								' The following expression was wrapped in a checked-expression
-								beamdia = 2.3596 * Positioncal.Position(9, k - 1) + -4.4599
-								If meanderflg = 1S Then
-									meanderamploc = meanderamp
-									processspeedloc = processspeed * meanderpitch / (4.0 * meanderamploc)
-								Else
-									processspeedloc = processspeed
-								End If
+								mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
 							End If
-							Dim meanderamptemp As Double
-							If k = 1 And j = 1 And i = 1 Then
-								meanderamptemp = 0.0
+						ElseIf k = Positioncal.PointNo Then
+							' The following expression was wrapped in a checked-expression
+							' The following expression was wrapped in a checked-expression
+							mainprogtxt = String.Concat(New String() {mainprogtxt, synchro, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", processspeedloc.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#")})
+							If Positioncal.Movementtype < 4S Then
+								' The following expression was wrapped in a checked-expression
+								' The following expression was wrapped in a checked-expression
+								mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
+							Else
+								mainprogtxt += vbCrLf
 							End If
-							meanderfreq = processspeed / (4.0 * meanderamploc)
-							If k = 1 Then
-								' The following expression was wrapped in a checked-expression
-								' The following expression was wrapped in a checked-expression
-								mainprogtxt = String.Concat(New String() { mainprogtxt, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#") })
-								If Positioncal.Movementtype < 4S Then
-									' The following expression was wrapped in a checked-expression
-									' The following expression was wrapped in a checked-expression
-									mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
-								Else
-									mainprogtxt += vbCrLf
-								End If
-								mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf & "ARCSET AN3=", beamdia.ToString("#0.0"), vbCrLf })
-								If meanderflg = 1S Then
-									If meanderamploc <> meanderamptemp Then
-										' The following expression was wrapped in a checked-expression
-										' The following expression was wrapped in a unchecked-expression
-										' The following expression was wrapped in a unchecked-expression
-										mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamploc * 1000.0))), vbCrLf })
-									End If
-									mainprogtxt = mainprogtxt + synchro + "WVON WEV#(1)" & vbCrLf
-								End If
-							ElseIf k > 1 And k < Positioncal.PointNo Then
-								' The following expression was wrapped in a checked-expression
-								' The following expression was wrapped in a checked-expression
-								mainprogtxt = String.Concat(New String() { mainprogtxt, synchro, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", processspeedloc.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#") })
-								If Positioncal.Movementtype < 4S Then
-									' The following expression was wrapped in a checked-expression
-									' The following expression was wrapped in a checked-expression
-									mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
-								Else
-									mainprogtxt += vbCrLf
-								End If
-								If meanderflg = 1S Then
-									mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-									If meanderamploc <> meanderamptemp Then
-										' The following expression was wrapped in a checked-expression
-										' The following expression was wrapped in a unchecked-expression
-										' The following expression was wrapped in a unchecked-expression
-										mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamploc * 1000.0))), vbCrLf })
-									End If
-								Else
-									mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-								End If
-							ElseIf k = Positioncal.PointNo Then
-								' The following expression was wrapped in a checked-expression
-								' The following expression was wrapped in a checked-expression
-								mainprogtxt = String.Concat(New String() { mainprogtxt, synchro, "MOV", interp, " C", (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#"), " V=", processspeedloc.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#") })
-								If Positioncal.Movementtype < 4S Then
-									' The following expression was wrapped in a checked-expression
-									' The following expression was wrapped in a checked-expression
-									mainprogtxt = mainprogtxt + " +MOVJ EC" + (CDbl((k + (j - 1) * Positioncal.PointNo)) + CDbl((i - 1)) * passes * CDbl(Positioncal.PointNo) + 2.0).ToString("0000#") + vbCrLf
-								Else
-									mainprogtxt += vbCrLf
-								End If
-							End If
-							meanderamptemp = meanderamploc
+						End If
+						meanderamptemp = meanderamploc
 
 						k += 1
 					End While
@@ -451,7 +451,7 @@ Namespace WindowsApplication1
 					If k = Positioncal.PointNo And CDbl(j) = passes And i = CInt(copies) Then
 						mainprogtxt += "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf
 					End If
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (j + (i - 1) * CInt((copies + 1S)) + 2).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (j + (i - 1) * CInt((copies + 1S)) + 2).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (j + (i - 1) * CInt((copies + 1S)) + 2).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (j + (i - 1) * CInt((copies + 1S)) + 2).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0"})
 					If Positioncal.Movementtype < 4S Then
 						mainprogtxt += " +MOVJ EX000 VJ=100.00" & vbCrLf
 					Else
@@ -464,13 +464,13 @@ Namespace WindowsApplication1
 			If Positioncal.Movementtype < 4S Then
 				mainprogtxt += "CALL JOB:STRESET" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0"})
 			If Positioncal.Movementtype < 4S Then
 				mainprogtxt += " +MOVJ EX000 VJ=100.00" & vbCrLf
 			Else
 				mainprogtxt += vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (Totalpoints + 3).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (Totalpoints + 3).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0"})
 			If Positioncal.Movementtype < 4S Then
 				mainprogtxt = mainprogtxt + " +MOVJ EC" + (Totalpoints + 3).ToString("0000#") + " VJ=100.00" & vbCrLf
 			Else
@@ -479,9 +479,9 @@ Namespace WindowsApplication1
 			mainprogtxt += "DI LEVEL= 2" & vbCrLf & "END"
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				If Positioncal.Movementtype < 4S Then
 					Positioncal.ControlGroup = 0S
 				Else
@@ -505,15 +505,15 @@ Namespace WindowsApplication1
 			Dim Rzz As Object = Positioncal.WorkZAxisYaw
 			Dim Rockangle As Object = 1
 			Dim mydatetime As DateTime = DateAndTime.Now
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			Dim stationangle As Double
 			Select Case Positioncal.StationPosition
 				Case 1
 					stationangle = 0.0
 				Case 2
-					stationangle = 0.5235987755982988
+					stationangle = 0.52359877559829882
 				Case 3
-					stationangle = 0.7853981633974483
+					stationangle = 0.78539816339744828
 				Case 4
 					stationangle = 1.0471975511965976
 				Case 5
@@ -532,7 +532,7 @@ Namespace WindowsApplication1
 				rotations = CDbl((CInt(Math.Round(rotations))))
 				effectivepitch = (width1 - Positioncal.CladWidth) / rotations
 			End If
-			If(effectivepitch - pitch) / pitch > 0.1 Then
+			If (effectivepitch - pitch) / pitch > 0.1 Then
 				rotations += 1.0
 				effectivepitch = (width1 - Positioncal.CladWidth) / rotations
 			End If
@@ -562,8 +562,8 @@ Namespace WindowsApplication1
 				rotations4 = 0
 			End If
 			dtheta = 2.0 * Math.Asin(chordlength / (keywidth + Positioncal.CladWidth))
-			arcpoints = CInt(Math.Round(3.141592653589793 / dtheta))
-			dtheta = 3.141592653589793 / CDbl(arcpoints)
+			arcpoints = CInt(Math.Round(3.1415926535897931 / dtheta))
+			dtheta = 3.1415926535897931 / CDbl(arcpoints)
 			chordlength = (keywidth + Positioncal.CladWidth) * Math.Sin(dtheta / 2.0)
 			Dim arcs As Short
 			If Positioncal.CladWidth + keydistance + keywidth / 2.0 + keylength <= width1 Then
@@ -588,36 +588,36 @@ Namespace WindowsApplication1
 			positions(3, 0) = postureangle + 90.0
 			positions(4, 0) = Conversions.ToDouble(Ryy)
 			positions(5, 0) = Conversions.ToDouble(Rzz)
-			expositions(0, 0) = stationangle / 6.283185307179586 * 331776.0
-			expositions(1, 0) = (keyangle / 360.0 + Math.Asin(Positioncal.CladWidth / (2.0 * (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.283185307179586) * 331776.0
+			expositions(0, 0) = stationangle / 6.2831853071795862 * 331776.0
+			expositions(1, 0) = (keyangle / 360.0 + Math.Asin(Positioncal.CladWidth / (2.0 * (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.2831853071795862) * 331776.0
 			Dim num As Short = 0S
 			Dim num2 As Short = CShort((Positioncal.Keyno - 1))
 			Dim ind As Integer
 			For i As Short = num To num2
 				Dim ycoord As Double = 0.0
-				positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = distance + (keydistance + keywidth / 2.0 + keylength) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-				positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+				positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = distance + (keydistance + keywidth / 2.0 + keylength) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+				positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 				positions(3, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = postureangle + 90.0
 				positions(4, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = Conversions.ToDouble(Ryy)
 				positions(5, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = Conversions.ToDouble(Rzz)
-				expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-				expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 + CDbl(i) / CDbl(Positioncal.Keyno) + Math.Asin(Positioncal.CladWidth / (2.0 * (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.283185307179586) * 331776.0
+				expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+				expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 + CDbl(i) / CDbl(Positioncal.Keyno) + Math.Asin(Positioncal.CladWidth / (2.0 * (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.2831853071795862) * 331776.0
 				Dim thetacoord As Double = Positioncal.CladWidth / 2.0 + keywidth / 2.0
 				Dim num3 As Integer = 0
 				Dim num4 As Integer = arcpoints
 				ind = num3
 				While ind <= num4
 					' The following expression was wrapped in a unchecked-expression
-					positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = distance + (keydistance + keywidth / 2.0 - ycoord) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-					positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = diameter / 2.0 - (keydistance + keywidth / 2.0 - ycoord) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+					positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = distance + (keydistance + keywidth / 2.0 - ycoord) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+					positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = diameter / 2.0 - (keydistance + keywidth / 2.0 - ycoord) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 					positions(3, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = postureangle + 90.0
 					positions(4, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = Conversions.ToDouble(Ryy)
 					positions(5, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = Conversions.ToDouble(Rzz)
-					expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) - (Math.Acos(thetacoord / (diameter / 2.0 - (keydistance + keywidth / 2.0 - ycoord) * Math.Sin(coneangle))) - Math.Acos((Positioncal.CladWidth + keywidth) / 2.0 / (diameter / 2.0 - (keydistance + keywidth / 2.0) * Math.Sin(coneangle)))) / 6.283185307179586 * 331776.0
+					expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + 2) = expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) - (Math.Acos(thetacoord / (diameter / 2.0 - (keydistance + keywidth / 2.0 - ycoord) * Math.Sin(coneangle))) - Math.Acos((Positioncal.CladWidth + keywidth) / 2.0 / (diameter / 2.0 - (keydistance + keywidth / 2.0) * Math.Sin(coneangle)))) / 6.2831853071795862 * 331776.0
 
-						thetacoord -= chordlength * Math.Sin((CDbl(ind) + 0.5) * dtheta)
-						ycoord += chordlength * Math.Cos((CDbl(ind) + 0.5) * dtheta)
+					thetacoord -= chordlength * Math.Sin((CDbl(ind) + 0.5) * dtheta)
+					ycoord += chordlength * Math.Cos((CDbl(ind) + 0.5) * dtheta)
 
 					ind += 1
 				End While
@@ -629,27 +629,27 @@ Namespace WindowsApplication1
 					ind = num5
 					While ind <= num6
 						' The following expression was wrapped in a unchecked-expression
-						positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = distance + (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-						positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+						positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = distance + (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 						positions(3, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = postureangle + 90.0
 						positions(4, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = Conversions.ToDouble(Ryy)
 						positions(5, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = Conversions.ToDouble(Rzz)
-						expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = stationangle / 6.283185307179586 * 331776.0
-						expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) - (Math.Acos(thetacoord / (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Sin(coneangle))) - Math.Acos((Positioncal.CladWidth + keywidth) / 2.0 / (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.283185307179586 * 331776.0
+						expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + ind + arcpoints + 3) = expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + 1) - (Math.Acos(thetacoord / (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength + ycoord) * Math.Sin(coneangle))) - Math.Acos((Positioncal.CladWidth + keywidth) / 2.0 / (diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle)))) / 6.2831853071795862 * 331776.0
 
-							thetacoord += chordlength * Math.Sin((CDbl(ind) + 0.5) * dtheta)
-							ycoord += chordlength * Math.Cos((CDbl(ind) + 0.5) * dtheta)
+						thetacoord += chordlength * Math.Sin((CDbl(ind) + 0.5) * dtheta)
+						ycoord += chordlength * Math.Cos((CDbl(ind) + 0.5) * dtheta)
 
 						ind += 1
 					End While
 				Else
 					' The following expression was wrapped in a unchecked-expression
-					positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = distance + (keydistance + keywidth / 2.0 + keylength) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-					positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+					positions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = distance + (keydistance + keywidth / 2.0 + keylength) * Math.Cos(coneangle) + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+					positions(2, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = diameter / 2.0 - (keydistance + keywidth / 2.0 + keylength) * Math.Sin(coneangle) + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 					positions(3, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = postureangle + 90.0
 					positions(4, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = Conversions.ToDouble(Ryy)
 					positions(5, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = Conversions.ToDouble(Rzz)
-					expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = stationangle / 6.283185307179586 * 331776.0
+					expositions(0, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = stationangle / 6.2831853071795862 * 331776.0
 					expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 3) = expositions(1, CInt(i) * (CInt(arcs) * arcpoints + 3) + arcpoints + 2)
 				End If
 			Next
@@ -658,21 +658,21 @@ Namespace WindowsApplication1
 			While CDbl((ind - 1)) / 2.0 * effectivepitch <= keydistance - Positioncal.CladWidth
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = distance + (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-				positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = diameter / 2.0 - (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-				positions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = distance + (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-				positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = diameter / 2.0 - (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+				positions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = distance + (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+				positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = diameter / 2.0 - (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+				positions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = distance + (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+				positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = diameter / 2.0 - (CDbl((ind - 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 				If ind = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl((ind - 1)) / 2.0 - 0.01) * 331776.0
+					expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl((ind - 1)) / 2.0 - 0.01) * 331776.0
 				ElseIf ind > 2 Then
 					' The following expression was wrapped in a unchecked-expression
-					expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl((ind - 1)) / 2.0 + CDbl((inioverweld / 100F))) * 331776.0
+					expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) - 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl((ind - 1)) / 2.0 + CDbl((inioverweld / 100.0F))) * 331776.0
 				End If
-				expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = stationangle / 6.283185307179586 * 331776.0
-				expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl((ind - 1)) / 2.0) * 331776.0
+				expositions(0, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = stationangle / 6.2831853071795862 * 331776.0
+				expositions(1, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl((ind - 1)) / 2.0) * 331776.0
 				positions(3, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = postureangle + 90.0
 				positions(4, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = Conversions.ToDouble(Operators.SubtractObject(Ryy, Rockangle))
 				positions(5, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) = Conversions.ToDouble(Rzz)
@@ -691,56 +691,56 @@ Namespace WindowsApplication1
 				While ind <= num10
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = distance + (CDbl((2 * rotations2 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-					positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = diameter / 2.0 - (CDbl((2 * rotations2 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+					positions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = distance + (CDbl((2 * rotations2 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+					positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = diameter / 2.0 - (CDbl((2 * rotations2 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 					positions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = positions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2)
 					positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2)
 
+					' The following expression was wrapped in a checked-expression
+					Dim num11 As Double = CDbl((ind + 2 * rotations2 + 1)) * effectivepitch / 2.0
+					If num11 <= keydistance + keywidth / 2.0 - Positioncal.CladWidth / 2.0 Then
 						' The following expression was wrapped in a checked-expression
-						Dim num11 As Double = CDbl((ind + 2 * rotations2 + 1)) * effectivepitch / 2.0
-						If num11 <= keydistance + keywidth / 2.0 - Positioncal.CladWidth / 2.0 Then
+						Dim w As Double = 2.0 * Math.Pow(Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) - Math.Pow(keydistance + keywidth / 2.0 - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0), 0.5)
+						If ind = 1 And i = 0S Then
 							' The following expression was wrapped in a checked-expression
-							Dim w As Double = 2.0 * Math.Pow(Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) - Math.Pow(keydistance + keywidth / 2.0 - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0), 0.5)
-							If ind = 1 And i = 0S Then
-								' The following expression was wrapped in a checked-expression
-								expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-								expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - 1.0 - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586) * 331776.0
-							ElseIf ind = 1 Then
-								' The following expression was wrapped in a checked-expression
-								expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-								expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * i - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-							Else
-								' The following expression was wrapped in a checked-expression
-								expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-								expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-							End If
-							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.283185307179586 * 331776.0
-							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-						ElseIf num11 <= keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 Then
-							Dim w As Double = keywidth + Positioncal.CladWidth
-							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.283185307179586 * 331776.0
-							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1)
-						ElseIf num11 <= keydistance + keywidth + keylength + Positioncal.CladWidth / 2.0 Then
-							Dim w As Double
-							If Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) < Math.Pow(keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0) Then
-								w = 0.0
-							Else
-								' The following expression was wrapped in a checked-expression
-								w = 2.0 * Math.Pow(Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) - Math.Pow(keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0), 0.5)
-							End If
-							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.283185307179586 * 331776.0
-							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1)
-							If ind = 2 * rotations3 - 1 Then
-								' The following expression was wrapped in a unchecked-expression
-								expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.283185307179586 * 331776.0
-								expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) + CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.283185307179586)) * 331776.0
-							End If
+							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - 1.0 - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862) * 331776.0
+						ElseIf ind = 1 Then
+							' The following expression was wrapped in a checked-expression
+							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * i - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
+						Else
+							' The following expression was wrapped in a checked-expression
+							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
 						End If
-						positions(3, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = postureangle + 90.0
+						expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
+					ElseIf num11 <= keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 Then
+						Dim w As Double = keywidth + Positioncal.CladWidth
+						expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
+						expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1)
+					ElseIf num11 <= keydistance + keywidth + keylength + Positioncal.CladWidth / 2.0 Then
+						Dim w As Double
+						If Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) < Math.Pow(keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0) Then
+							w = 0.0
+						Else
+							' The following expression was wrapped in a checked-expression
+							w = 2.0 * Math.Pow(Math.Pow((keywidth + Positioncal.CladWidth) / 2.0, 2.0) - Math.Pow(keydistance + keywidth / 2.0 + keylength - Positioncal.CladWidth / 2.0 - CDbl((ind + 1 + 2 * rotations2)) * effectivepitch / 2.0, 2.0), 0.5)
+						End If
+						expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) - CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
+						expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.2831853071795862 * 331776.0
+						expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1)
+						If ind = 2 * rotations3 - 1 Then
+							' The following expression was wrapped in a unchecked-expression
+							expositions(0, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.2831853071795862 * 331776.0
+							expositions(1, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3) = (keyangle / 360.0 - CDbl((2S * (i + 1S) - 1S)) / CDbl((2 * Positioncal.Keyno)) - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) + CDbl(sign) * (1.0 / CDbl((2 * Positioncal.Keyno)) - Math.Asin(w / (diameter - (Positioncal.CladWidth + CDbl((ind + 1 + 2 * rotations2)) * effectivepitch) * Math.Sin(coneangle))) / 6.2831853071795862)) * 331776.0
+						End If
+					End If
+					positions(3, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = postureangle + 90.0
 
 					positions(4, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = Conversions.ToDouble(Operators.AddObject(Ryy, Operators.MultiplyObject(sign, Rockangle)))
 					positions(5, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) = Conversions.ToDouble(Rzz)
@@ -762,25 +762,25 @@ Namespace WindowsApplication1
 			While ind <= num13
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = distance + (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-				positions(2, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = diameter / 2.0 - (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-				positions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = distance + (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
-				positions(2, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = diameter / 2.0 - (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+				positions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = distance + (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+				positions(2, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = diameter / 2.0 - (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+				positions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = distance + (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Cos(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
+				positions(2, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = diameter / 2.0 - (CDbl((2 * rotations2 + 2 * rotations3 + ind + 1)) * effectivepitch + Positioncal.CladWidth) * Math.Sin(coneangle) / 2.0 + Positioncal.ToolOffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 				If ind = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) + 1.0 - 0.01) * 331776.0
+					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) + 1.0 - 0.01) * 331776.0
 				ElseIf ind > 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) + 1.0 + CDbl((inioverweld / 100F))) * 331776.0
+					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 1) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) + 1.0 + CDbl((inioverweld / 100.0F))) * 331776.0
 				End If
-				expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.283185307179586 * 331776.0
-				expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) + 1.0) * 331776.0
+				expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = stationangle / 6.2831853071795862 * 331776.0
+				expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) + 1.0) * 331776.0
 				If ind = 2 * rotations4 - 1 Then
 					cycles += 1
-					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.283185307179586 * 331776.0
-					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.283185307179586 + CDbl(cycles) + 1.0) * 331776.0
+					expositions(0, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.2831853071795862 * 331776.0
+					expositions(1, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = (keyangle / 360.0 - Math.Asin(keywidth / (diameter - Positioncal.CladWidth * Math.Sin(coneangle))) / 6.2831853071795862 + CDbl(cycles) + 1.0) * 331776.0
 				End If
 				positions(3, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = postureangle + 90.0
 				positions(4, ind + 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) = Conversions.ToDouble(Operators.SubtractObject(Ryy, Rockangle))
@@ -797,12 +797,12 @@ Namespace WindowsApplication1
 			positions(3, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = CDbl(Positioncal.HomePos(3))
 			positions(4, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = CDbl(Positioncal.HomePos(4))
 			positions(5, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = CDbl(Positioncal.HomePos(5))
-			expositions(0, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.283185307179586 * 331776.0
+			expositions(0, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = stationangle / 6.2831853071795862 * 331776.0
 			expositions(1, 2 * rotations2 + 2 * rotations4 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 3) = 0.0
 			Dim power As Double = 0.0025 * CDbl(Positioncal.LaserPowerIni) + -1.1111
 			Dim feed As Double = 0.1 * Positioncal.PowderFeed
 			Positioncal.TotalSteps = 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 4
-			Dim headertxt As String = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 4), ",0,", Conversions.ToString(2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 4), ",1,0,1" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			Dim headertxt As String = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 4), ",0,", Conversions.ToString(2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 4), ",1,0,1" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num14 As Integer = 0
 			Dim num15 As Integer = 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 2
 			Dim j As Short
@@ -811,16 +811,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				j = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#.000;-#.000;0.000") + ","
-						j += 1S
-					Loop While j <= 2S
-					j = 3S
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#.00;-#.00;0.00") + ","
-						j += 1S
-					Loop While j <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#.00;-#.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#.000;-#.000;0.000") + ","
+					j += 1S
+				Loop While j <= 2S
+				j = 3S
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#.00;-#.00;0.00") + ","
+					j += 1S
+				Loop While j <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#.00;-#.00;0.00") + vbCrLf
 
 				ind += 1
 			End While
@@ -830,7 +830,7 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(j), 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("#;-#;0") + ","
 
-					j += 1S
+				j += 1S
 
 			Loop While j <= 4S
 			headertxt = headertxt + positions(5, 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("#;-#;0") + vbCrLf
@@ -838,22 +838,22 @@ Namespace WindowsApplication1
 			Dim num17 As Integer = 2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3
 			ind = num16
 			While ind <= num17
-				headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), expositions(0, ind).ToString("#0;-#0;0"), ",", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf })
+				headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), expositions(0, ind).ToString("#0;-#0;0"), ",", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf})
 				ind += 1
 			End While
-			headertxt = String.Concat(New String() { headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0" })
+			headertxt = String.Concat(New String() {headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"})
 			Dim mainprogtxt As String = "NOP" & vbCrLf & "EI LEVEL= 1" & vbCrLf
 			If meanderflg = 1S Then
 				Dim meanderfreq As Double
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "JUMP *PILOTON IF IN#(6)=ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf & "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "JUMP *PILOTON IF IN#(6)=ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf & "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf})
 			Dim num18 As Short = 0S
 			Dim num19 As Short = CShort((Positioncal.Keyno - 1))
 			Dim i As Short
@@ -864,25 +864,25 @@ Namespace WindowsApplication1
 				ind = num20
 				While ind <= num21
 					If ind < CInt(arcs) * arcpoints + 3 Then
-						If Not(ind = 1 And i = 0S) Then
+						If Not (ind = 1 And i = 0S) Then
 							If ind = 1 Then
-								mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf })
+								mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf})
 							ElseIf ind = 2 Or ind = arcpoints + 3 Then
-								mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVL C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf })
+								mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVL C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf})
 							Else
-								mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf })
+								mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf})
 							End If
 						End If
 					Else
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=0 +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf })
+						mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", processspeed.ToString("#.0;-#.0;0.0"), " PL=0 +MOVJ EC", (ind + CInt(i) * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00" & vbCrLf})
 					End If
 					If ind = 1 Then
 						' The following expression was wrapped in a unchecked-expression
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf })
+						mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf})
 					End If
 					ind += 1
 				End While
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", CInt((i + 3S)).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", CInt((i + 3S)).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=2 +MOVJ EX000 VJ=100.00" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", CInt((i + 3S)).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", CInt((i + 3S)).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=2 +MOVJ EX000 VJ=100.00" & vbCrLf})
 				i = i + 1S
 			End While
 			Dim num22 As Integer = 1
@@ -891,17 +891,17 @@ Namespace WindowsApplication1
 			While ind <= num23
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) * 3.141592653589793) * 81.0 / 20.0
+				Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)) * 3.1415926535897931) * 81.0 / 20.0
 				If ind = 1 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVJ C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00 PL=", Positioncal.PositionLevel.ToString("#"), " DEC=20 +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVJ C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=100.00 PL=", Positioncal.PositionLevel.ToString("#"), " DEC=20 +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3)).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 				End If
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVJ C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1).ToString("0000#"), " VJ=100.00 PL=", Positioncal.PositionLevel.ToString("#"), " DEC=20 +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVJ C", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1).ToString("0000#"), " VJ=100.00 PL=", Positioncal.PositionLevel.ToString("#"), " DEC=20 +MOVJ EC", (ind + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 1).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 				ind += 2
 			End While
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", CInt((i + 3S)).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", CInt((i + 3S)).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=2 +MOVJ EX000 VJ=100.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", CInt((i + 3S)).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", CInt((i + 3S)).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=2 +MOVJ EX000 VJ=100.00" & vbCrLf})
 			Dim num24 As Short = 0S
 			Dim num25 As Short = CShort((Positioncal.Keyno - 1))
 			i = num24
@@ -912,17 +912,17 @@ Namespace WindowsApplication1
 				While ind <= num27
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
-					Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) * 3.141592653589793) * 81.0 / 20.0
+					Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2) * 3.1415926535897931) * 81.0 / 20.0
 					If ind = 1 Then
 						' The following expression was wrapped in a unchecked-expression
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf })
+						mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf})
 					Else
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+						mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 2).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 					End If
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + CInt(i) * (2 * rotations3) + 2 * rotations2 + Positioncal.Keyno * (CInt(arcs) * arcpoints + 3) + 3).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 					ind += 2
 				End While
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (Positioncal.Keyno + CInt(i) + 4).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (Positioncal.Keyno + CInt(i) + 4).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EX000 VJ=100.00" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCOF" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (Positioncal.Keyno + CInt(i) + 4).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (Positioncal.Keyno + CInt(i) + 4).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EX000 VJ=100.00" & vbCrLf})
 				i = i + 1S
 			End While
 			Dim num28 As Integer = 1
@@ -931,22 +931,22 @@ Namespace WindowsApplication1
 			While ind <= num29
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) * 3.141592653589793) * 81.0 / 20.0
+				Dim rpm As Double = processspeed * 60.0 / (2.0 * positions(2, ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2) * 3.1415926535897931) * 81.0 / 20.0
 				If ind = 1 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " VJ=100" & vbCrLf & "ARCON AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 2).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 				End If
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 3).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 3).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 3).ToString("0000#"), " V=100.0 PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", (ind + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations2 + 3).ToString("0000#"), " VJ=", rpm.ToString("#.00;-#.00;0.00"), vbCrLf})
 				ind += 2
 			End While
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCOF" & vbCrLf & "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (2 * Positioncal.Keyno + 4).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (2 * Positioncal.Keyno + 4).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=100.0 PL=2  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=2  +MOVJ EC", (2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("0000#"), " VJ=100.00" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCOF" & vbCrLf & "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL", (2 * Positioncal.Keyno + 4).ToString(), " IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL", (2 * Positioncal.Keyno + 4).ToString(), vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=100.0 PL=2  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=2  +MOVJ EC", (2 * rotations2 + Positioncal.Keyno * (2 * rotations3 + CInt(arcs) * arcpoints + 3) + 2 * rotations4 + 3).ToString("0000#"), " VJ=100.00" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 0S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -981,7 +981,7 @@ Namespace WindowsApplication1
 				Case 5
 					Tiltaxispos = 82944
 			End Select
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			Positioncal.CrankThrow = 0.01
 			If meanderflg = 0S Then
 				meanderamp = 0.0
@@ -994,19 +994,19 @@ Namespace WindowsApplication1
 			End If
 			positions(0, 0) = Positioncal.IniXAxisOffset
 			positions(1, 0) = distance + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + Positioncal.IniYAxisOffset
-			positions(2, 0) = Positioncal.CrankThrow + CDbl(vlvgeom) * (diameter / 2.0 + Positioncal.IniZAxisOffset) - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(postureangle * 3.141592653589793 / 180.0)
+			positions(2, 0) = Positioncal.CrankThrow + CDbl(vlvgeom) * (diameter / 2.0 + Positioncal.IniZAxisOffset) - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
 			positions(3, 0) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 			positions(4, 0) = CDbl(Ry)
 			positions(5, 0) = CDbl(Rz)
 			positions(0, 1) = Positioncal.IniXAxisOffset
 			positions(1, 1) = distance + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-			positions(2, 1) = Positioncal.CrankThrow + CDbl(vlvgeom) * diameter / 2.0 - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+			positions(2, 1) = Positioncal.CrankThrow + CDbl(vlvgeom) * diameter / 2.0 - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 			positions(3, 1) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 			positions(4, 1) = CDbl(Ry)
 			positions(5, 1) = CDbl(Rz)
 			positions(0, 2) = Positioncal.WorkXAxisOffset
-			positions(1, 2) = distance + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-			positions(2, 2) = Positioncal.CrankThrow + CDbl(vlvgeom) * diameter / 2.0 - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+			positions(1, 2) = distance + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+			positions(2, 2) = Positioncal.CrankThrow + CDbl(vlvgeom) * diameter / 2.0 - CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 			positions(3, 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 			positions(4, 2) = CDbl(Ry)
 			positions(5, 2) = CDbl(Rz)
@@ -1101,18 +1101,18 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						positions(3, totalpoints + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 						positions(4, totalpoints + j + 2) = CDbl(Ry)
 						positions(5, totalpoints + j + 2) = CDbl(Rz)
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						positions(3, totalpoints + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 						positions(4, totalpoints + j + 2) = CDbl(Ry)
 						positions(5, totalpoints + j + 2) = CDbl(Rz)
@@ -1126,15 +1126,15 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 					End If
 					If k = 1 Then
 						k = -1
@@ -1153,33 +1153,33 @@ Namespace WindowsApplication1
 						If finaldistance = 0.0 Then
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 						Else
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
 						End If
 					ElseIf finaldistance = 0.0 Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
 					End If
 					positions(3, totalpoints + inipoints + pointnumber + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang * (1.0 - CDbl((CInt(((1S - rockangvar) * 2S)) * j)) / CDbl(finpoints) - CDbl((rockangvar * 2S)))
@@ -1190,30 +1190,30 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						If finaldistance = 0.0 Then
 							' The following expression was wrapped in a unchecked-expression
-							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 						Else
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 						End If
 					ElseIf finaldistance = 0.0 Then
 						' The following expression was wrapped in a unchecked-expression
-						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + CDbl(vlvgeom) * diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 					End If
 				End If
@@ -1243,7 +1243,7 @@ Namespace WindowsApplication1
 			Dim headertxt As String
 			Dim mainprogtxt As String
 			Positioncal.TotalSteps = totalpoints + inipoints + pointnumber + finpoints + 5
-			headertxt = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER ", stationposition.ToString("#"), vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER ", stationposition.ToString("#"), vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num9 As Integer = 0
 			Dim num10 As Integer = totalpoints + inipoints + pointnumber + finpoints + 3
 			Dim i As Short
@@ -1251,16 +1251,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				i = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(i), ind).ToString("#0.000;-#0.000;0.000") + ","
-						i += 1S
-					Loop While i <= 2S
-					i = 3S
-					Do
-						headertxt = headertxt + positions(CInt(i), ind).ToString("#0.00;-#0.00;0.00") + ","
-						i += 1S
-					Loop While i <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(i), ind).ToString("#0.000;-#0.000;0.000") + ","
+					i += 1S
+				Loop While i <= 2S
+				i = 3S
+				Do
+					headertxt = headertxt + positions(CInt(i), ind).ToString("#0.00;-#0.00;0.00") + ","
+					i += 1S
+				Loop While i <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -1269,29 +1269,29 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(i), totalpoints + inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + ","
 
-					i += 1S
+				i += 1S
 
 			Loop While i <= 4S
 			headertxt = headertxt + positions(5, totalpoints + inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + vbCrLf
 			Dim num11 As Integer = 0
 			Dim num12 As Integer = totalpoints + inipoints + pointnumber + finpoints + 4
 			For ind As Integer = num11 To num12
-				headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), Tiltaxispos.ToString(), ",", expositions(1, ind).ToString("#;-#;0"), vbCrLf })
+				headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), Tiltaxispos.ToString(), ",", expositions(1, ind).ToString("#;-#;0"), vbCrLf})
 			Next
-			headertxt = String.Concat(New String() { headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0" })
+			headertxt = String.Concat(New String() {headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"})
 			mainprogtxt = "NOP" & vbCrLf & "EI LEVEL= 1" & vbCrLf
 			If meanderflg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf})
 			mainprogtxt = mainprogtxt + "TIMER T=" + Positioncal.PowderSettling2.ToString("#0.00") + vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf
 			If meanderflg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * meanderamp)
@@ -1300,42 +1300,42 @@ Namespace WindowsApplication1
 			Dim num14 As Integer = totalpoints + inipoints + pointnumber + finpoints + 3
 			For j As Integer = num13 To num14
 				If j = 2 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				ElseIf j = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
 					If meanderflg = 1S Then
 						mainprogtxt += "SWVON WEV#(1)" & vbCrLf
 					End If
 				ElseIf j = totalpoints + inipoints + pointnumber + finpoints + 3 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				End If
 
+				' The following expression was wrapped in a checked-expression
+				If j >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((j - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((j + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0 Or Positioncal.LaserPowerIni <> Positioncal.LaserPowerFin) Then
 					' The following expression was wrapped in a checked-expression
-					If j >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((j - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((j + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0 Or Positioncal.LaserPowerIni <> Positioncal.LaserPowerFin) Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-					End If
-					If j = totalpoints + inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
-						feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((j = totalpoints + inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
-						mainprogtxt += "SWVOF" & vbCrLf
-					End If
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
+				End If
+				If j = totalpoints + inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
+					feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((j = totalpoints + inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
+					mainprogtxt += "SWVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 0S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -1354,7 +1354,7 @@ Namespace WindowsApplication1
 			Dim Ry As Double = Positioncal.WorkYAxisTilt
 			Dim Rz As Double = Positioncal.WorkZAxisYaw
 			Dim mydatetime As DateTime = DateAndTime.Now
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			Dim Claddingdir_loc As Short = CShort(Positioncal.CladdingDir)
 			If meanderflg = 0S Then
 				meanderamp = 0.0
@@ -1460,18 +1460,18 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						positions(3, totalpoints + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 						positions(4, totalpoints + j + 2) = Ry
 						positions(5, totalpoints + j + 2) = Rz
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 * CDbl((j - 1)) / CDbl(inipoints)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						positions(3, totalpoints + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang
 						positions(4, totalpoints + j + 2) = Ry
 						positions(5, totalpoints + j + 2) = Rz
@@ -1485,15 +1485,15 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((j - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + pitch * CDbl((j - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp - layerheight * CDbl((i - 1S)) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 					End If
 					If k = 1.0 Then
 						k = -1.0
@@ -1512,33 +1512,33 @@ Namespace WindowsApplication1
 						If finaldistance = 0.0 Then
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 						Else
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
 						End If
 					ElseIf finaldistance = 0.0 Then
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + j + 2) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + j + 2) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + j + 2) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + j + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + finoverweld_int / 100.0 * CDbl((j - 1)) / CDbl(finpoints) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
 					End If
 					positions(3, totalpoints + inipoints + pointnumber + j + 2) = 90.0 + postureangle - CDbl(Claddingdir_loc) * rockang * (1.0 - CDbl((CInt(((1S - rockangvar) * 2S)) * j)) / CDbl(finpoints) - CDbl((rockangvar * 2S)))
@@ -1549,30 +1549,30 @@ Namespace WindowsApplication1
 					If Claddingdir_loc = 1S Then
 						If finaldistance = 0.0 Then
 							' The following expression was wrapped in a unchecked-expression
-							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 						Else
 							' The following expression was wrapped in a unchecked-expression
 							' The following expression was wrapped in a checked-expression
-							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+							positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+							positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+							positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_right + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(rightang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 							expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 						End If
 					ElseIf finaldistance = 0.0 Then
 						' The following expression was wrapped in a unchecked-expression
-						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl(pointnumber) / CDbl(Positioncal.PPR) + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 					Else
 						' The following expression was wrapped in a unchecked-expression
 						' The following expression was wrapped in a checked-expression
-						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793)
-						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.141592653589793 / 180.0)
-						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.141592653589793) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.141592653589793 / 180.0)
+						positions(0, totalpoints + inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + CDbl(Positioncal.DirectionFlg) * crankthrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931)
+						positions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Cos(coneangle) + tooloffset * Math.Sin(postureangle * 3.1415926535897931 / 180.0)
+						positions(2, totalpoints + inipoints + pointnumber + finpoints + 3) = crankthrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * 2.0 * 3.1415926535897931) + diameter / 2.0 + layerheight * CDbl((i - 1S)) * Math.Cos(coneangle) - CDbl(Claddingdir_loc) * (width_left + width1 - Positioncal.CladWidth / 2.0 - meanderamp + layerheight * CDbl(i) * Math.Tan(leftang)) * Math.Sin(coneangle) + tooloffset * Math.Cos(postureangle * 3.1415926535897931 / 180.0)
 						expositions(1, totalpoints + inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + totalangle + inioverweld_int / 100.0 + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + finoverweld_int / 100.0) * CDbl(Positioncal.DirectionFlg))
 					End If
 				End If
@@ -1602,7 +1602,7 @@ Namespace WindowsApplication1
 			Dim headertxt As String
 			Dim mainprogtxt As String
 			Positioncal.TotalSteps = totalpoints + inipoints + pointnumber + finpoints + 5
-			headertxt = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(totalpoints + inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num9 As Integer = 0
 			Dim num10 As Integer = totalpoints + inipoints + pointnumber + finpoints + 3
 			Dim i As Short
@@ -1610,16 +1610,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				i = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(i), ind).ToString("#0.000;-#0.000;0.000") + ","
-						i += 1S
-					Loop While i <= 2S
-					i = 3S
-					Do
-						headertxt = headertxt + positions(CInt(i), ind).ToString("#0.00;-#0.00;0.00") + ","
-						i += 1S
-					Loop While i <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(i), ind).ToString("#0.000;-#0.000;0.000") + ","
+					i += 1S
+				Loop While i <= 2S
+				i = 3S
+				Do
+					headertxt = headertxt + positions(CInt(i), ind).ToString("#0.00;-#0.00;0.00") + ","
+					i += 1S
+				Loop While i <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -1628,29 +1628,29 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(i), totalpoints + inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + ","
 
-					i += 1S
+				i += 1S
 
 			Loop While i <= 4S
 			headertxt = headertxt + positions(5, totalpoints + inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + vbCrLf
 			Dim num11 As Integer = 0
 			Dim num12 As Integer = totalpoints + inipoints + pointnumber + finpoints + 4
 			For ind As Integer = num11 To num12
-				headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), "0,", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf })
+				headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), "0,", expositions(1, ind).ToString("#0;-#0;0"), vbCrLf})
 			Next
-			headertxt = String.Concat(New String() { headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0" })
+			headertxt = String.Concat(New String() {headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0,0" & vbCrLf & "EX0001=0,0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"})
 			mainprogtxt = "NOP" & vbCrLf & "EI LEVEL= 1" & vbCrLf
 			If meanderflg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON RB1 P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF RB1" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf})
 			mainprogtxt = mainprogtxt + "TIMER T=" + Positioncal.PowderSettling2.ToString("#0.00") + vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf
 			If meanderflg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * meanderamp)
@@ -1659,42 +1659,42 @@ Namespace WindowsApplication1
 			Dim num14 As Integer = totalpoints + inipoints + pointnumber + finpoints + 3
 			For j As Integer = num13 To num14
 				If j = 2 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				ElseIf j = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
 					If meanderflg = 1S Then
 						mainprogtxt += "SWVON WEV#(1)" & vbCrLf
 					End If
 				ElseIf j = totalpoints + inipoints + pointnumber + finpoints + 3 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", j.ToString("0000#"), vbCrLf})
 				End If
 
+				' The following expression was wrapped in a checked-expression
+				If j >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((j - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((j + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
 					' The following expression was wrapped in a checked-expression
-					If j >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((j - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((j + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-					End If
-					If j = totalpoints + inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
-						feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((j = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
-						mainprogtxt += "SWVOF" & vbCrLf
-					End If
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
+				End If
+				If j = totalpoints + inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
+					feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((j = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
+					mainprogtxt += "SWVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (totalpoints + inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 0S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -1709,11 +1709,11 @@ Namespace WindowsApplication1
 			Dim Ry As Double = Positioncal.WorkYAxisTilt
 			Dim Rz As Double = Positioncal.WorkZAxisYaw
 			Dim mydatetime As DateTime = DateAndTime.Now
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			If meanderflg = 0S Then
 				meanderamp = 0.0
 			End If
-			Dim inipoints As Integer = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100F * 360F / 30F)))))
+			Dim inipoints As Integer = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100.0F * 360.0F / 30.0F)))))
 			If inipoints > Positioncal.PPR Then
 				inipoints = Positioncal.PPR
 			End If
@@ -1743,9 +1743,9 @@ Namespace WindowsApplication1
 			For i As Integer = num To num2
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin(CDbl(((inioverweld / 100F + 1F) * CSng((i - 1)) / CSng(Positioncal.PPR) * 2F)) * 3.141592653589793)
+				positions(0, i + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin(CDbl(((inioverweld / 100.0F + 1.0F) * CSng((i - 1)) / CSng(Positioncal.PPR) * 2.0F)) * 3.1415926535897931)
 				positions(1, i + 1) = distance + CDbl(Positioncal.CladdingDir) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-				positions(2, i + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos(CDbl(((inioverweld / 100F + 1F) * CSng((i - 1)) / CSng(Positioncal.PPR) * 2F)) * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+				positions(2, i + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos(CDbl(((inioverweld / 100.0F + 1.0F) * CSng((i - 1)) / CSng(Positioncal.PPR) * 2.0F)) * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 				positions(3, i + 1) = 90.0 + postureangle
 				positions(4, i + 1) = Ry
 				positions(5, i + 1) = Rz
@@ -1756,9 +1756,9 @@ Namespace WindowsApplication1
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (CDbl((i - 1)) / CDbl(Positioncal.PPR) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin(CDbl((inioverweld / 100F + 1F)) * (CDbl(i) + CDbl(Positioncal.PPR) / 2.0 - 1.0) / CDbl(Positioncal.PPR) * 2.0 * 3.141592653589793)
+				positions(0, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (CDbl((i - 1)) / CDbl(Positioncal.PPR) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin(CDbl((inioverweld / 100.0F + 1.0F)) * (CDbl(i) + CDbl(Positioncal.PPR) / 2.0 - 1.0) / CDbl(Positioncal.PPR) * 2.0 * 3.1415926535897931)
 				positions(1, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = distance + CDbl(Positioncal.CladdingDir) * (CDbl((i - 1)) / CDbl(Positioncal.PPR) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-				positions(2, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (CDbl((i - 1)) / CDbl(Positioncal.PPR) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos(CDbl((inioverweld / 100F + 1F)) * (CDbl(i) + CDbl(Positioncal.PPR) / 2.0 - 1.0) / CDbl(Positioncal.PPR) * 2.0 * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+				positions(2, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (CDbl((i - 1)) / CDbl(Positioncal.PPR) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos(CDbl((inioverweld / 100.0F + 1.0F)) * (CDbl(i) + CDbl(Positioncal.PPR) / 2.0 - 1.0) / CDbl(Positioncal.PPR) * 2.0 * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 				positions(3, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = 90.0 + postureangle
 				positions(4, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = Ry
 				positions(5, CInt(Math.Round(CDbl(i) + CDbl(Positioncal.PPR) / 2.0 + 1.0))) = Rz
@@ -1769,9 +1769,9 @@ Namespace WindowsApplication1
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + Positioncal.PPR + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * ((CDbl((i - 1)) / CDbl(Positioncal.PPR) + 0.5) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+				positions(0, i + Positioncal.PPR + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * ((CDbl((i - 1)) / CDbl(Positioncal.PPR) + 0.5) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100.0F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 				positions(1, i + Positioncal.PPR + 1) = distance + CDbl(Positioncal.CladdingDir) * ((CDbl((i - 1)) / CDbl(Positioncal.PPR) + 0.5) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-				positions(2, i + Positioncal.PPR + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * ((CDbl((i - 1)) / CDbl(Positioncal.PPR) + 0.5) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+				positions(2, i + Positioncal.PPR + 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * ((CDbl((i - 1)) / CDbl(Positioncal.PPR) + 0.5) * effectivepitch + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100.0F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 				positions(3, i + Positioncal.PPR + 1) = 90.0 + postureangle
 				positions(4, i + Positioncal.PPR + 1) = Ry
 				positions(5, i + Positioncal.PPR + 1) = Rz
@@ -1783,9 +1783,9 @@ Namespace WindowsApplication1
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+					positions(0, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 					positions(1, i + Positioncal.PPR + pointnumber - 1) = distance + CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-					positions(2, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+					positions(2, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 					positions(3, i + Positioncal.PPR + pointnumber - 1) = 90.0 + postureangle
 					positions(4, i + Positioncal.PPR + pointnumber - 1) = Ry
 					positions(5, i + Positioncal.PPR + pointnumber - 1) = Rz
@@ -1793,17 +1793,17 @@ Namespace WindowsApplication1
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
+					positions(0, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
 					positions(1, i + Positioncal.PPR + pointnumber - 1) = distance + CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-					positions(2, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+					positions(2, i + Positioncal.PPR + pointnumber - 1) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 					positions(3, i + Positioncal.PPR + pointnumber - 1) = 90.0 + postureangle
 					positions(4, i + Positioncal.PPR + pointnumber - 1) = Ry
 					positions(5, i + Positioncal.PPR + pointnumber - 1) = Rz
 				End If
 			Next
-			positions(0, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100F * 2F)) + (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 3.0) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
+			positions(0, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle)) * Math.Sin((CDbl((inioverweld / 100.0F * 2.0F)) + (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 3.0) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
 			positions(1, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = distance + CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
-			positions(2, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100F * 2F)) + (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 3.0) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) + tooloffset * Math.Sin(coneangle) - 1.5
+			positions(2, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = (diameter / 2.0 - CDbl(Positioncal.CladdingDir) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + 1.5) * Math.Cos((CDbl((inioverweld / 100.0F * 2.0F)) + (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 3.0) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) + tooloffset * Math.Sin(coneangle) - 1.5
 			positions(3, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = 90.0 + postureangle
 			positions(4, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = Ry
 			positions(5, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))) = Rz
@@ -1820,14 +1820,14 @@ Namespace WindowsApplication1
 			For i As Integer = num9 To ppr
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				expositions(1, i + 1) = 331776.0 * (initialang / 360.0 + CDbl(((inioverweld / 100F + 1F) * CSng((i - 1)) / CSng(Positioncal.PPR)))) * CDbl(Positioncal.DirectionFlg)
+				expositions(1, i + 1) = 331776.0 * (initialang / 360.0 + CDbl(((inioverweld / 100.0F + 1.0F) * CSng((i - 1)) / CSng(Positioncal.PPR)))) * CDbl(Positioncal.DirectionFlg)
 			Next
 			Dim num10 As Integer = 1
 			Dim num11 As Integer = pointnumber - 2
 			For i As Integer = num10 To num11
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				expositions(1, i + Positioncal.PPR + 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg)
+				expositions(1, i + Positioncal.PPR + 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100.0F)) + CDbl((i + Positioncal.PPR - 1)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg)
 			Next
 			Dim num12 As Integer = 1
 			Dim num13 As Integer = CInt(Math.Round(CDbl(Positioncal.PPR) / 2.0 + 1.0))
@@ -1836,19 +1836,19 @@ Namespace WindowsApplication1
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					expositions(1, i + Positioncal.PPR + pointnumber - 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg)
+					expositions(1, i + Positioncal.PPR + pointnumber - 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 3)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg)
 				Else
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					expositions(1, i + Positioncal.PPR + pointnumber - 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg)
+					expositions(1, i + Positioncal.PPR + pointnumber - 1) = 331776.0 * (initialang / 360.0 + CDbl((inioverweld / 100.0F * CSng((i + Positioncal.PPR - 1)) / CSng(Positioncal.PPR))) + CDbl((i + Positioncal.PPR + pointnumber - 4)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg)
 				End If
 			Next
 			expositions(1, CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 2.0))) = 0.0
 			Dim meanderfreq As Double = processspeed / (4.0 * meanderamp)
 			Dim power As Double = CDbl(Positioncal.LaserPowerIni) * 0.0025 + -1.1111
 			Dim feed As Double = 0.1 * Positioncal.PowderFeed
-			Dim headertxt As String = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 2.0), ",0,", Conversions.ToString(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 2.0), ",2,0,2" & vbCrLf & "///USER 6" & vbCrLf })
+			Dim headertxt As String = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 2.0), ",0,", Conversions.ToString(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 2.0), ",2,0,2" & vbCrLf & "///USER 6" & vbCrLf})
 			If Positioncal.Toolno = 0 Then
 				headertxt += "///TOOL 0" & vbCrLf
 			Else
@@ -1862,16 +1862,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				j = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#0.000;-#0.000;0.000") + ","
-						j += 1S
-					Loop While j <= 2S
-					j = 3S
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#0.00;-#0.00;0.00") + ","
-						j += 1S
-					Loop While j <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#0.000;-#0.000;0.000") + ","
+					j += 1S
+				Loop While j <= 2S
+				j = 3S
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#0.00;-#0.00;0.00") + ","
+					j += 1S
+				Loop While j <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -1888,22 +1888,22 @@ Namespace WindowsApplication1
 			Dim num16 As Integer = 0
 			Dim num17 As Integer = CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 1.0))
 			For ind As Integer = num16 To num17
-				headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), 82944.0.ToString("#"), expositions(1, ind).ToString("#0;-#0;0"), vbCrLf })
+				headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), 82944.0.ToString("#"), expositions(1, ind).ToString("#0;-#0;0"), vbCrLf})
 			Next
 			headertxt = headertxt + "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=0" & vbCrLf & "EX0001=0" & vbCrLf & "//INST" & vbCrLf & "///DATE " + mydatetime.ToString("yyyy/MM/dd HH:mm") + vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER 5" & vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"
 			mainprogtxt = "NOP" & vbCrLf
 			If meanderflg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(6)" & vbCrLf & "SETE P000 (2) ", (positions(1, 0) * 1000.0).ToString("#"), vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "MOVJ C00000 VJ=", 5.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(6)" & vbCrLf & "SETE P000 (2) ", (positions(1, 0) * 1000.0).ToString("#"), vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "MOVJ C00000 VJ=", 5.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(6) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DOUT OT#(10) ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DOUT OT#(10) ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf})
 			mainprogtxt = mainprogtxt + "TIMER T=" + Positioncal.PowderSettling2.ToString("#0.00") + vbCrLf & "EI LEVEL= 2" & vbCrLf & "*STARTL" & vbCrLf
 			If meanderflg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * meanderamp)
@@ -1912,34 +1912,34 @@ Namespace WindowsApplication1
 			Dim num19 As Integer = CInt(Math.Round(1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber)))
 			For i As Integer = num18 To num19
 
-					If i = 2 Then
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.00;-#.00;0.00"), " PL=2  +MOVJ EC", i.ToString("0000#"), vbCrLf & "DOUT OT#(3) ON" & vbCrLf & "DOUT OT#(9) ON" & vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AVP=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power * 10.0 + 50.0).ToString("#0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * 10.0 + 50.0).ToString("#0"), " AN3=", (10.0 * feed).ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
-						If meanderflg = 1S Then
-							mainprogtxt += "SWVON WEV#(1)" & vbCrLf
-						End If
-					Else
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.00;-#.00;0.00"), " PL=2  +MOVJ EC", i.ToString("0000#"), vbCrLf })
+				If i = 2 Then
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.00;-#.00;0.00"), " PL=2  +MOVJ EC", i.ToString("0000#"), vbCrLf & "DOUT OT#(3) ON" & vbCrLf & "DOUT OT#(9) ON" & vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AVP=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power * 10.0 + 50.0).ToString("#0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * 10.0 + 50.0).ToString("#0"), " AN3=", (10.0 * feed).ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
+					If meanderflg = 1S Then
+						mainprogtxt += "SWVON WEV#(1)" & vbCrLf
 					End If
-					If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 10.0 / 4500.0
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * 10.0 + 50.0).ToString("#0"), vbCrLf })
-					End If
-					If CDbl(i) = 1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 1.0 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) * 10.0 + 50.0).ToString("#0"), " AN3=", (10.0 * feed).ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((CDbl(i) = 1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 1.0) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
-						mainprogtxt += "WVOF" & vbCrLf
-					End If
+				Else
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.00;-#.00;0.00"), " PL=2  +MOVJ EC", i.ToString("0000#"), vbCrLf})
+				End If
+				If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 Then
+					' The following expression was wrapped in a checked-expression
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 10.0 / 4500.0
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * 10.0 + 50.0).ToString("#0"), vbCrLf})
+				End If
+				If CDbl(i) = 1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 1.0 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AVP=", (power * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) * 10.0 + 50.0).ToString("#0"), " AN3=", (10.0 * feed).ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((CDbl(i) = 1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) - 1.0) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
+					mainprogtxt += "WVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(6)" & vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 1.0).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 1.0).ToString("0000#"), " VJ=100.00" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(6)" & vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 1.0).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (1.5 * CDbl(Positioncal.PPR) + CDbl(pointnumber) + 1.0).ToString("0000#"), " VJ=100.00" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 			Catch ex As Exception
 			End Try
 		End Sub
@@ -2014,7 +2014,7 @@ Namespace WindowsApplication1
 			Dim headertxt As String
 			Dim mainprogtxt As String
 			Positioncal.TotalSteps = 2 * rotations + 3
-			headertxt = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(2 * rotations + 3), ",0,0,2,0,0" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString(), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString(), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(2 * rotations + 3), ",0,0,2,0,0" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString(), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString(), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num3 As Integer = 0
 			Dim num4 As Integer = 2 * rotations + 1
 			Dim k As Short
@@ -2022,16 +2022,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				k = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(k), ind).ToString("#0.000;-#0.000;0.000") + ","
-						k += 1S
-					Loop While k <= 2S
-					k = 3S
-					Do
-						headertxt = headertxt + positions(CInt(k), ind).ToString("#0.00;-#0.00;0.00") + ","
-						k += 1S
-					Loop While k <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(k), ind).ToString("#0.000;-#0.000;0.000") + ","
+					k += 1S
+				Loop While k <= 2S
+				k = 3S
+				Do
+					headertxt = headertxt + positions(CInt(k), ind).ToString("#0.00;-#0.00;0.00") + ","
+					k += 1S
+				Loop While k <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -2040,7 +2040,7 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(k), 2 * rotations + 2).ToString("#;-#;0") + ","
 
-					k += 1S
+				k += 1S
 
 			Loop While k <= 4S
 			headertxt = headertxt + positions(5, 2 * rotations + 2).ToString("#;-#;0") + vbCrLf
@@ -2049,15 +2049,15 @@ Namespace WindowsApplication1
 			If meanderflg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf & "JUMP *QVERROR IF IN#(1)=ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf & "JUMP *QVERROR IF IN#(1)=ON" & vbCrLf & "TIMER T=", Positioncal.PowderSettling2.ToString("#0.00"), vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf})
 			If meanderflg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * meanderamp)
 			End If
@@ -2066,40 +2066,40 @@ Namespace WindowsApplication1
 			For j As Integer = num5 To num6
 				If j = 2 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
 					If meanderflg = 1S Then
 						mainprogtxt += "WVON WEV#(1)" & vbCrLf
 					End If
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf})
 				ElseIf j = 2 * rotations + 1 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT" & vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT" & vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVL C", j.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf})
 				End If
 
+				' The following expression was wrapped in a checked-expression
+				If j >= 2 And Positioncal.LaserReductionTrackNo >= j - 2 And Math.IEEERemainder(CDbl((j + 2)), 2.0) = 0.0 Then
 					' The following expression was wrapped in a checked-expression
-					If j >= 2 And Positioncal.LaserReductionTrackNo >= j - 2 And Math.IEEERemainder(CDbl((j + 2)), 2.0) = 0.0 Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-					End If
-					If j = 2 * rotations AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
-						feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((j = 2 * rotations + 1) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
-						mainprogtxt += "WVOF" & vbCrLf
-					End If
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((j - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
+				End If
+				If j = 2 * rotations AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
+					feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((j = 2 * rotations + 1) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
+					mainprogtxt += "WVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 BF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "MOVL C", (2 * rotations + 2).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 BF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "MOVL C", (2 * rotations + 2).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 1S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -2136,16 +2136,16 @@ Namespace WindowsApplication1
 				Case 5
 					Tiltaxispos = 82944
 			End Select
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			Positioncal.CrankThrow = 0.01
 			If meanderflg = 0S Then
 				meanderamp = 0.0
 			End If
-			inipoints = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100F * 360F / 30F)))))
+			inipoints = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100.0F * 360.0F / 30.0F)))))
 			If inipoints = 0 And inioverweld <> 0F Then
 				inipoints = 1
 			End If
-			finpoints = CInt(Math.Round(Math.Round(CDbl((finoverweld / 100F * 360F / 30F)))))
+			finpoints = CInt(Math.Round(Math.Round(CDbl((finoverweld / 100.0F * 360.0F / 30.0F)))))
 			If finpoints = 0 And finoverweld <> 0F Then
 				finpoints = 1
 			End If
@@ -2180,9 +2180,9 @@ Namespace WindowsApplication1
 			For i As Integer = num To num2
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793)
+				positions(0, i + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931)
 				positions(1, i + 2) = distance + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-				positions(2, i + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+				positions(2, i + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 				positions(3, i + 2) = postureangle + 90.0
 				positions(4, i + 2) = CDbl(Ry)
 				positions(5, i + 2) = CDbl(Rz)
@@ -2193,9 +2193,9 @@ Namespace WindowsApplication1
 			For i As Integer = num3 To num4
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + inipoints + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+				positions(0, i + inipoints + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 				positions(1, i + inipoints + 2) = distance + CDbl(Claddingdir_loc) * (pitch * CDbl((i - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-				positions(2, i + inipoints + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (pitch * CDbl((i - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+				positions(2, i + inipoints + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (pitch * CDbl((i - 1)) / CDbl(Positioncal.PPR) + Positioncal.CladWidth / 2.0 + meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 				positions(3, i + inipoints + 2) = postureangle + 90.0 + CDbl(j) * Positioncal.Tiltangle
 				positions(4, i + inipoints + 2) = CDbl(Ry)
 				positions(5, i + inipoints + 2) = CDbl(Rz)
@@ -2212,16 +2212,16 @@ Namespace WindowsApplication1
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + inipoints + pointnumber + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+					positions(0, i + inipoints + pointnumber + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 					positions(1, i + inipoints + pointnumber + 2) = distance + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-					positions(2, i + inipoints + pointnumber + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+					positions(2, i + inipoints + pointnumber + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 				Else
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + inipoints + pointnumber + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
+					positions(0, i + inipoints + pointnumber + 2) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
 					positions(1, i + inipoints + pointnumber + 2) = distance + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-					positions(2, i + inipoints + pointnumber + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+					positions(2, i + inipoints + pointnumber + 2) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 				End If
 				positions(3, i + inipoints + pointnumber + 2) = postureangle + 90.0
 				positions(4, i + inipoints + pointnumber + 2) = CDbl(Ry)
@@ -2230,15 +2230,15 @@ Namespace WindowsApplication1
 			If finaldistance = 0.0 Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(0, inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(1, inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-				positions(2, inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+				positions(2, inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 			Else
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(0, inipoints + pointnumber + finpoints + 3) = Positioncal.WorkXAxisOffset + Positioncal.CrankThrow * Math.Sin((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(1, inipoints + pointnumber + finpoints + 3) = distance + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Cos(coneangle) + tooloffset * Math.Sin(coneangle)
-				positions(2, inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
+				positions(2, inipoints + pointnumber + finpoints + 3) = Positioncal.CrankThrow * Math.Cos((1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 2)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931) - diameter / 2.0 + CDbl(Claddingdir_loc) * (width1 - Positioncal.CladWidth / 2.0 - meanderamp) * Math.Sin(coneangle) + tooloffset * Math.Cos(coneangle)
 			End If
 			positions(3, inipoints + pointnumber + finpoints + 3) = postureangle + 90.0
 			positions(4, inipoints + pointnumber + finpoints + 3) = CDbl(Ry)
@@ -2257,14 +2257,14 @@ Namespace WindowsApplication1
 			For i As Integer = num7 To num8
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				expositions(1, i + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * CDbl(Positioncal.DirectionFlg))
+				expositions(1, i + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * CDbl(Positioncal.DirectionFlg))
 			Next
 			Dim num9 As Integer = 1
 			Dim num10 As Integer = pointnumber
 			For i As Integer = num9 To num10
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				expositions(1, i + inipoints + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
+				expositions(1, i + inipoints + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 			Next
 			Dim num11 As Integer = 1
 			Dim num12 As Integer = finpoints
@@ -2272,21 +2272,21 @@ Namespace WindowsApplication1
 				If finaldistance = 0.0 Then
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
-					expositions(1, i + inipoints + pointnumber + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
+					expositions(1, i + inipoints + pointnumber + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * CDbl(Positioncal.DirectionFlg))
 				Else
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					expositions(1, i + inipoints + pointnumber + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
+					expositions(1, i + inipoints + pointnumber + 2) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * CDbl(Positioncal.DirectionFlg))
 				End If
 			Next
 			If finaldistance = 0.0 Then
 				' The following expression was wrapped in a unchecked-expression
-				expositions(1, inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * CDbl(Positioncal.DirectionFlg))
+				expositions(1, inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * CDbl(Positioncal.DirectionFlg))
 			Else
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				expositions(1, inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * CDbl(Positioncal.DirectionFlg))
+				expositions(1, inipoints + pointnumber + finpoints + 3) = 331776.0 * (initialang / 360.0 + (1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * CDbl(Positioncal.DirectionFlg))
 			End If
 			expositions(1, inipoints + pointnumber + finpoints + 4) = 0.0
 			Dim meanderfreq As Double = processspeed / (4.0 * meanderamp)
@@ -2296,7 +2296,7 @@ Namespace WindowsApplication1
 			Dim headertxt As String
 			Dim mainprogtxt As String
 			Positioncal.TotalSteps = inipoints + pointnumber + finpoints + 5
-			headertxt = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString(), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",0,", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",2,0,2" & vbCrLf & "///USER ", stationposition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString(), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num13 As Integer = 0
 			Dim num14 As Integer = inipoints + pointnumber + finpoints + 3
 			Dim k As Short
@@ -2304,16 +2304,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				k = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(k), ind).ToString("#0.000;-#0.000;0.000") + ","
-						k += 1S
-					Loop While k <= 2S
-					k = 3S
-					Do
-						headertxt = headertxt + positions(CInt(k), ind).ToString("#0.00;-#0.00;0.00") + ","
-						k += 1S
-					Loop While k <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(k), ind).ToString("#0.000;-#0.000;0.000") + ","
+					k += 1S
+				Loop While k <= 2S
+				k = 3S
+				Do
+					headertxt = headertxt + positions(CInt(k), ind).ToString("#0.00;-#0.00;0.00") + ","
+					k += 1S
+				Loop While k <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -2322,29 +2322,29 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(k), inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + ","
 
-					k += 1S
+				k += 1S
 
 			Loop While k <= 4S
 			headertxt = headertxt + positions(5, inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + vbCrLf
 			Dim num15 As Integer = 0
 			Dim num16 As Integer = inipoints + pointnumber + finpoints + 4
 			For ind As Integer = num15 To num16
-				headertxt = String.Concat(New String() { headertxt, "EC", ind.ToString("0000#="), Tiltaxispos.ToString(), ",", expositions(1, ind).ToString("#;-#;0"), vbCrLf })
+				headertxt = String.Concat(New String() {headertxt, "EC", ind.ToString("0000#="), Tiltaxispos.ToString(), ",", expositions(1, ind).ToString("#;-#;0"), vbCrLf})
 			Next
-			headertxt = String.Concat(New String() { headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=", Tiltaxispos.ToString(), ",0" & vbCrLf & "EX0001=", Tiltaxispos.ToString(), ",0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0" })
+			headertxt = String.Concat(New String() {headertxt, "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf & "EX0000=", Tiltaxispos.ToString(), ",0" & vbCrLf & "EX0001=", Tiltaxispos.ToString(), ",0" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", stationposition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///GROUP2 ST1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"})
 			mainprogtxt = "NOP" & vbCrLf & "EI LEVEL= 1" & vbCrLf
 			If meanderflg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(meanderamp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "GETE D001 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "ADD D001 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "SETE P000 (3) D001" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "GETE D001 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "ADD D001 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "SETE P000 (3) D001" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT  +MOVJ EC00000 VJ=100.00" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20  +MOVJ EC00001 VJ=100.00" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf})
 			mainprogtxt = mainprogtxt + "TIMER T=" + Positioncal.PowderSettling2.ToString("#0.00") + vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf
 			If meanderflg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * meanderamp)
@@ -2353,42 +2353,42 @@ Namespace WindowsApplication1
 			Dim num18 As Integer = inipoints + pointnumber + finpoints + 3
 			For i As Integer = num17 To num18
 				If i = 2 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf})
 				ElseIf i = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0.0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
 					If meanderflg = 1S Then
 						mainprogtxt += "SWVON WEV#(1)" & vbCrLf
 					End If
 				ElseIf i = inipoints + pointnumber + finpoints + 3 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", i.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT  +MOVJ EC", i.ToString("0000#"), vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "SMOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " +MOVJ EC", i.ToString("0000#"), vbCrLf})
 				End If
 
+				' The following expression was wrapped in a checked-expression
+				If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
 					' The following expression was wrapped in a checked-expression
-					If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString(), vbCrLf })
-					End If
-					If i = inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinPowderRed <> 0 Or Positioncal.FinOverPower <> 0) AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
-						feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((i = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
-						mainprogtxt += "SWVOF" & vbCrLf
-					End If
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString(), vbCrLf})
+				End If
+				If i = inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinPowderRed <> 0 Or Positioncal.FinOverPower <> 0) AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
+					feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0.0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((i = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And meanderflg) <> 0S Then
+					mainprogtxt += "SWVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "GETE D001 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "ADD D001 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "SETE P000 (3) D001" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "CALL JOB:STRESET" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "GETE D000 P000 (2)" & vbCrLf & "GETE D001 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniYAxisOffset * 1000.0).ToString("#0"), vbCrLf & "ADD D001 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (2) D000" & vbCrLf & "SETE P000 (3) D001" & vbCrLf & "CNVRT PX000 PX000 UF#(", stationposition.ToString("#)"), vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0  +MOVJ EX000 VJ=100.00" & vbCrLf & "MOVL C", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0  +MOVJ EC", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " VJ=100.00" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 0S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -2405,20 +2405,20 @@ Namespace WindowsApplication1
 			Dim Ry As Double = Positioncal.WorkYAxisTilt
 			Dim Rz As Double = Positioncal.WorkZAxisYaw
 			Dim mydatetime As DateTime = DateAndTime.Now
-			coneangle = coneangle * 3.141592653589793 / 180.0
+			coneangle = coneangle * 3.1415926535897931 / 180.0
 			Dim inipoints As Integer
 			Dim finpoints As Integer
 			Dim pointnumber As Integer
 			Dim finaldistance As Double
-			inipoints = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100F * 360F / 30F)))))
+			inipoints = CInt(Math.Round(Math.Round(CDbl((inioverweld / 100.0F * 360.0F / 30.0F)))))
 			If inipoints = 0 And inioverweld <> 0F Then
 				inipoints = 1
 			End If
-			finpoints = CInt(Math.Round(Math.Round(CDbl((finoverweld / 100F * 360F / 30F)))))
+			finpoints = CInt(Math.Round(Math.Round(CDbl((finoverweld / 100.0F * 360.0F / 30.0F)))))
 			If finpoints = 0 And finoverweld <> 0F Then
 				finpoints = 1
 			End If
-			finoverweld = CSng((CDbl(finoverweld) + 10.0 / (6.283185307179586 * (diameter / 2.0 - (width1 - 2.0 * Positioncal.MeanderAmp - Positioncal.CladWidth) * Math.Sin(coneangle))) * 100.0))
+			finoverweld = CSng((CDbl(finoverweld) + 10.0 / (6.2831853071795862 * (diameter / 2.0 - (width1 - 2.0 * Positioncal.MeanderAmp - Positioncal.CladWidth) * Math.Sin(coneangle))) * 100.0))
 			Dim rotations As Double = Math.Round(width1 / pitch, 2)
 			If rotations < 0.0 Then
 				rotations = 0.0
@@ -2427,34 +2427,34 @@ Namespace WindowsApplication1
 			finaldistance = rotations - Conversion.Int(rotations * CDbl(Positioncal.PPR)) / CDbl(Positioncal.PPR)
 			positions = CType(Utils.CopyArray(CType(positions, Array), New Double(6, inipoints + pointnumber + finpoints + 5 + 1 - 1) {}), Double(,))
 			expositions = CType(Utils.CopyArray(CType(expositions, Array), New Double(6, inipoints + pointnumber + finpoints + 5 + 1 - 1) {}), Double(,))
-			positions(0, 0) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.141592653589793 / 180.0) + Positioncal.IniXAxisOffset
-			positions(1, 0) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.141592653589793 / 180.0) + Positioncal.IniYAxisOffset
+			positions(0, 0) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.1415926535897931 / 180.0) + Positioncal.IniXAxisOffset
+			positions(1, 0) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.1415926535897931 / 180.0) + Positioncal.IniYAxisOffset
 			positions(2, 0) = Zpos + tooloffset + Positioncal.IniZAxisOffset
-			positions(3, 0) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.141592653589793 / 180.0)
-			positions(4, 0) = -(90.0 - postureangle) * Math.Sin(initialang * 3.141592653589793 / 180.0)
+			positions(3, 0) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.1415926535897931 / 180.0)
+			positions(4, 0) = -(90.0 - postureangle) * Math.Sin(initialang * 3.1415926535897931 / 180.0)
 			positions(5, 0) = Rz
-			positions(0, 1) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.141592653589793 / 180.0) + Positioncal.IniXAxisOffset
-			positions(1, 1) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.141592653589793 / 180.0)
+			positions(0, 1) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.1415926535897931 / 180.0) + Positioncal.IniXAxisOffset
+			positions(1, 1) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.1415926535897931 / 180.0)
 			positions(2, 1) = Zpos + tooloffset
-			positions(3, 1) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.141592653589793 / 180.0)
-			positions(4, 1) = -(90.0 - postureangle) * Math.Sin(initialang * 3.141592653589793 / 180.0)
+			positions(3, 1) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.1415926535897931 / 180.0)
+			positions(4, 1) = -(90.0 - postureangle) * Math.Sin(initialang * 3.1415926535897931 / 180.0)
 			positions(5, 1) = Rz
-			positions(0, 2) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.141592653589793 / 180.0)
-			positions(1, 2) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.141592653589793 / 180.0)
+			positions(0, 2) = Xpos + diameter / 2.0 * Math.Sin(initialang * 3.1415926535897931 / 180.0)
+			positions(1, 2) = Ypos - diameter / 2.0 * Math.Cos(initialang * 3.1415926535897931 / 180.0)
 			positions(2, 2) = Zpos + tooloffset
-			positions(3, 2) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.141592653589793 / 180.0)
-			positions(4, 2) = -(90.0 - postureangle) * Math.Sin(initialang * 3.141592653589793 / 180.0)
+			positions(3, 2) = 180.0 - (90.0 - postureangle) * Math.Cos(initialang * 3.1415926535897931 / 180.0)
+			positions(4, 2) = -(90.0 - postureangle) * Math.Sin(initialang * 3.1415926535897931 / 180.0)
 			positions(5, 2) = Rz
 			Dim num As Integer = 1
 			Dim num2 As Integer = inipoints
 			For i As Integer = num To num2
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + 2) = Xpos + diameter / 2.0 * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793)
-				positions(1, i + 2) = Ypos - diameter / 2.0 * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793)
+				positions(0, i + 2) = Xpos + diameter / 2.0 * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931)
+				positions(1, i + 2) = Ypos - diameter / 2.0 * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931)
 				positions(2, i + 2) = Zpos + tooloffset
-				positions(3, i + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793)
-				positions(4, i + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.141592653589793)
+				positions(3, i + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931)
+				positions(4, i + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F * CSng((i - 1)) / CSng(inipoints)))) * 2.0 * 3.1415926535897931)
 				positions(5, i + 2) = Rz
 			Next
 			Dim num3 As Integer = 1
@@ -2463,11 +2463,11 @@ Namespace WindowsApplication1
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, i + inipoints + 2) = Xpos + (diameter / 2.0 + CDbl((i - 1)) / CDbl(Positioncal.PPR) * pitch * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-				positions(1, i + inipoints + 2) = Ypos - (diameter / 2.0 + CDbl((i - 1)) / CDbl(Positioncal.PPR) * pitch * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+				positions(0, i + inipoints + 2) = Xpos + (diameter / 2.0 + CDbl((i - 1)) / CDbl(Positioncal.PPR) * pitch * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+				positions(1, i + inipoints + 2) = Ypos - (diameter / 2.0 + CDbl((i - 1)) / CDbl(Positioncal.PPR) * pitch * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 				positions(2, i + inipoints + 2) = Zpos + tooloffset + CDbl((i - 1)) / CDbl(Positioncal.PPR) * pitch * Math.Cos(coneangle)
-				positions(3, i + inipoints + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-				positions(4, i + inipoints + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+				positions(3, i + inipoints + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+				positions(4, i + inipoints + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((i - 1)) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 				positions(5, i + inipoints + 2) = Rz
 			Next
 			Dim num5 As Integer = 1
@@ -2476,40 +2476,40 @@ Namespace WindowsApplication1
 				If finaldistance = 0.0 Then
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + inipoints + pointnumber + 2) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-					positions(1, i + inipoints + pointnumber + 2) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+					positions(0, i + inipoints + pointnumber + 2) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+					positions(1, i + inipoints + pointnumber + 2) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 					positions(2, i + inipoints + pointnumber + 2) = Zpos + tooloffset + width1 * Math.Cos(coneangle)
-					positions(3, i + inipoints + pointnumber + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
-					positions(4, i + inipoints + pointnumber + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.141592653589793)
+					positions(3, i + inipoints + pointnumber + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
+					positions(4, i + inipoints + pointnumber + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl(pointnumber) / CDbl(Positioncal.PPR)) * 2.0 * 3.1415926535897931)
 					positions(5, i + inipoints + pointnumber + 2) = Rz
 				Else
 					' The following expression was wrapped in a unchecked-expression
 					' The following expression was wrapped in a checked-expression
 					' The following expression was wrapped in a checked-expression
-					positions(0, i + inipoints + pointnumber + 2) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-					positions(1, i + inipoints + pointnumber + 2) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
+					positions(0, i + inipoints + pointnumber + 2) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+					positions(1, i + inipoints + pointnumber + 2) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
 					positions(2, i + inipoints + pointnumber + 2) = Zpos + tooloffset + width1 * Math.Cos(coneangle)
-					positions(3, i + inipoints + pointnumber + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
-					positions(4, i + inipoints + pointnumber + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((finoverweld / 100F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.141592653589793)
+					positions(3, i + inipoints + pointnumber + 2) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
+					positions(4, i + inipoints + pointnumber + 2) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((finoverweld / 100.0F * CSng((i - 1)) / CSng(finpoints))) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance) * 2.0 * 3.1415926535897931)
 					positions(5, i + inipoints + pointnumber + 2) = Rz
 				End If
 			Next
 			If finaldistance = 0.0 Then
 				' The following expression was wrapped in a unchecked-expression
-				positions(0, inipoints + pointnumber + finpoints + 3) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
-				positions(1, inipoints + pointnumber + finpoints + 3) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(0, inipoints + pointnumber + finpoints + 3) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
+				positions(1, inipoints + pointnumber + finpoints + 3) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(2, inipoints + pointnumber + finpoints + 3) = Zpos + tooloffset + width1 * Math.Cos(coneangle)
-				positions(3, inipoints + pointnumber + finpoints + 3) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
-				positions(4, inipoints + pointnumber + finpoints + 3) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(3, inipoints + pointnumber + finpoints + 3) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
+				positions(4, inipoints + pointnumber + finpoints + 3) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl(pointnumber) / CDbl(Positioncal.PPR) + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(5, inipoints + pointnumber + finpoints + 3) = Rz
 			Else
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a checked-expression
-				positions(0, inipoints + pointnumber + finpoints + 3) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
-				positions(1, inipoints + pointnumber + finpoints + 3) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(0, inipoints + pointnumber + finpoints + 3) = Xpos + (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
+				positions(1, inipoints + pointnumber + finpoints + 3) = Ypos - (diameter / 2.0 + width1 * Math.Sin(coneangle)) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(2, inipoints + pointnumber + finpoints + 3) = Zpos + tooloffset + width1 * Math.Cos(coneangle)
-				positions(3, inipoints + pointnumber + finpoints + 3) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
-				positions(4, inipoints + pointnumber + finpoints + 3) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100F))) * 2.0 * 3.141592653589793)
+				positions(3, inipoints + pointnumber + finpoints + 3) = 180.0 - (90.0 - postureangle) * Math.Cos((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
+				positions(4, inipoints + pointnumber + finpoints + 3) = -(90.0 - postureangle) * Math.Sin((initialang / 360.0 + 1.0 / CDbl(Positioncal.PPR) + CDbl((inioverweld / 100.0F)) + CDbl((pointnumber - 1)) / CDbl(Positioncal.PPR) + finaldistance + CDbl((finoverweld / 100.0F))) * 2.0 * 3.1415926535897931)
 				positions(5, inipoints + pointnumber + finpoints + 3) = Rz
 			End If
 			positions(0, inipoints + pointnumber + finpoints + 4) = CDbl(Positioncal.HomePos(0))
@@ -2525,7 +2525,7 @@ Namespace WindowsApplication1
 			Dim headertxt As String
 			Dim mainprogtxt As String
 			Positioncal.TotalSteps = inipoints + pointnumber + finpoints + 5
-			headertxt = String.Concat(New String() { "/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",0,0,2,0,0" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf })
+			headertxt = String.Concat(New String() {"/JOB" & vbCrLf & "//NAME HOSTMOV" & vbCrLf & "//POS" & vbCrLf & "///NPOS ", Conversions.ToString(inipoints + pointnumber + finpoints + 5), ",0,0,2,0,0" & vbCrLf & "///USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///TOOL ", Positioncal.Toolno.ToString("#0"), vbCrLf & "///POSTYPE USER" & vbCrLf & "///RECTAN" & vbCrLf & "///RCONF 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" & vbCrLf})
 			Dim num7 As Integer = 0
 			Dim num8 As Integer = inipoints + pointnumber + finpoints + 3
 			Dim j As Short
@@ -2533,16 +2533,16 @@ Namespace WindowsApplication1
 				headertxt = headertxt + "C" + ind.ToString("0000#=")
 				j = 0S
 
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#0.000;-#0.000;0.000") + ","
-						j += 1S
-					Loop While j <= 2S
-					j = 3S
-					Do
-						headertxt = headertxt + positions(CInt(j), ind).ToString("#0.00;-#0.00;0.00") + ","
-						j += 1S
-					Loop While j <= 4S
-					headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#0.000;-#0.000;0.000") + ","
+					j += 1S
+				Loop While j <= 2S
+				j = 3S
+				Do
+					headertxt = headertxt + positions(CInt(j), ind).ToString("#0.00;-#0.00;0.00") + ","
+					j += 1S
+				Loop While j <= 4S
+				headertxt = headertxt + positions(5, ind).ToString("#0.00;-#0.00;0.00") + vbCrLf
 
 			Next
 			headertxt += "///POSTYPE PULSE" & vbCrLf & "///PULSE" & vbCrLf
@@ -2551,23 +2551,23 @@ Namespace WindowsApplication1
 			Do
 				headertxt = headertxt + positions(CInt(j), inipoints + pointnumber + finpoints + 4).ToString("#;-#;0") + ","
 
-					j += 1S
+				j += 1S
 
 			Loop While j <= 4S
-			headertxt = String.Concat(New String() { headertxt, positions(5, inipoints + pointnumber + finpoints + 4).ToString("#;-#;0"), vbCrLf & "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0" })
+			headertxt = String.Concat(New String() {headertxt, positions(5, inipoints + pointnumber + finpoints + 4).ToString("#;-#;0"), vbCrLf & "///POSTYPE BASE" & vbCrLf & "///RECTAN" & vbCrLf & "P0000=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "P0001=0.000,0.000,0.000,0.00,0.00,0.00" & vbCrLf & "//INST" & vbCrLf & "///DATE ", mydatetime.ToString("yyyy/MM/dd HH:mm"), vbCrLf & "///COMM SUB TASK TO HOSTMAST" & vbCrLf & "///ATTR SC,RW,RJ" & vbCrLf & "////FRAME USER ", Positioncal.StationPosition.ToString("#"), vbCrLf & "///GROUP1 RB1" & vbCrLf & "///LVARS 0,0,0,0,0,0,0,0"})
 			mainprogtxt = "NOP" & vbCrLf & "EI LEVEL= 1" & vbCrLf
 			If Positioncal.MeanderFlg = 1S Then
 				' The following expression was wrapped in a unchecked-expression
 				' The following expression was wrapped in a unchecked-expression
-				mainprogtxt = String.Concat(New String() { mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(Positioncal.MeanderAmp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf })
+				mainprogtxt = String.Concat(New String() {mainprogtxt, "SETFILE WEV#(1) (4) ", Conversions.ToString(CInt(Math.Round(meanderfreq * 10.0))), vbCrLf & "SETFILE WEV#(1) (5) ", Conversions.ToString(CInt(Math.Round(Positioncal.MeanderAmp * 1000.0))), vbCrLf & "SETFILE WEV#(1) (8) 0" & vbCrLf & "SETFILE WEV#(1) (9) 0" & vbCrLf})
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL1 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL1" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.IdleSpeed.ToString("#0.0"), vbCrLf & "GETS PX000 $PX000" & vbCrLf & "GETE D000 P000 (4)" & vbCrLf & "CALL JOB:ARMCOR IF D000>=", 184115.0.ToString("#"), vbCrLf & "CALL JOB:ARMCOR IF D000<=-", 184115.0.ToString("#"), vbCrLf & "GETPOS PX000 STEP#(2)" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "JUMP *LABEL2 IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SUB D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "MUL D000 -1" & vbCrLf & "SETE P000 (1) 0" & vbCrLf & "SETE P000 (2) 0" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "SETE P000 (4) 0" & vbCrLf & "SETE P000 (5) 0" & vbCrLf & "SETE P000 (6) 0" & vbCrLf & "SFTON P000 RF" & vbCrLf & "*LABEL2" & vbCrLf & "MOVL C00000 V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0 NWAIT" & vbCrLf & "DOUT OT#(1) ON" & vbCrLf & "DOUT OT#(8) ON" & vbCrLf & "JUMP *PILOTON IF IN#(2)=ON" & vbCrLf & "WAIT IN#(6)=ON T=5.00" & vbCrLf & "JUMP *END IF IN#(6)=OFF" & vbCrLf})
 			If Positioncal.PowderJar = 1S Then
 				mainprogtxt += "DOUT OT#(4) ON" & vbCrLf & "DOUT OT#(6) ON" & vbCrLf
 			Else
 				mainprogtxt += "DOUT OT#(5) ON" & vbCrLf & "DOUT OT#(7) ON" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "TIMER T=", Positioncal.PowderSettling1.ToString("#0.00"), vbCrLf & "*PILOTON" & vbCrLf & "SFTOF" & vbCrLf & "MOVL C00001 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0 DEC=20" & vbCrLf & "WAIT IN#(1)=ON T=5.00" & vbCrLf})
 			mainprogtxt = mainprogtxt + "TIMER T=" + Positioncal.PowderSettling2.ToString("#0.00") + vbCrLf & "EI LEVEL= 3" & vbCrLf & "*STARTL" & vbCrLf & "DOUT OT#(2) ON" & vbCrLf
 			If Positioncal.MeanderFlg = 1S Then
 				processspeed = processspeed * Positioncal.MeanderPitch / (4.0 * Positioncal.MeanderAmp)
@@ -2576,42 +2576,42 @@ Namespace WindowsApplication1
 			Dim num10 As Integer = inipoints + pointnumber + finpoints + 3
 			For i As Integer = num9 To num10
 				If i = 2 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf})
 				ElseIf i = 3 Then
 					' The following expression was wrapped in a unchecked-expression
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", Positioncal.ApproachSpeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf & "ARCON AC=", (feed * (1.0 - CDbl(Positioncal.IniPowderRed) / 100.0) * 100.0).ToString("#0"), " AV=", ((1.0 + CDbl(Positioncal.IniOverPower) / 100.0) * power).ToString("#0"), vbCrLf & "ARCCTS AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.IniOverPowerDis.ToString("#0.0"), vbCrLf})
 					If Positioncal.MeanderFlg = 1S Then
 						mainprogtxt += "WVON WEV#(1)" & vbCrLf
 					End If
 				ElseIf i = inipoints + pointnumber + finpoints + 3 Then
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT" & vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), " NWAIT" & vbCrLf})
 				Else
-					mainprogtxt = String.Concat(New String() { mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf })
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "MOVC C", i.ToString("0000#"), " V=", processspeed.ToString("#0.0;-#.0;0.0"), " PL=", Positioncal.PositionLevel.ToString("#"), vbCrLf})
 				End If
 
+				' The following expression was wrapped in a checked-expression
+				If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
 					' The following expression was wrapped in a checked-expression
-					If i >= Positioncal.PPR + 2 And CDbl(Positioncal.LaserReductionTrackNo) >= CDbl((i - 2)) / CDbl(Positioncal.PPR) And Math.IEEERemainder(CDbl((i + 2)), CDbl(Positioncal.PPR)) = 0.0 AndAlso (Positioncal.IniPowderRed <> 0 Or Positioncal.IniOverPower <> 0) Then
-						' The following expression was wrapped in a checked-expression
-						' The following expression was wrapped in a checked-expression
-						power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf })
-					End If
-					If i = inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
-						power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
-						feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
-						mainprogtxt = String.Concat(New String() { mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf })
-					End If
-					If(If((-If(((i = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And Positioncal.MeanderFlg) <> 0S Then
-						mainprogtxt += "WVOF" & vbCrLf
-					End If
+					' The following expression was wrapped in a checked-expression
+					power = (CDbl(Positioncal.LaserPowerIni) - CDbl((Positioncal.LaserPowerIni - Positioncal.LaserPowerFin)) / CDbl(Positioncal.LaserReductionTrackNo) * CDbl((i - 2)) / CDbl(Positioncal.PPR)) * 0.0025 + -1.1111
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCSET AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), vbCrLf})
+				End If
+				If i = inipoints + pointnumber + finpoints + 2 AndAlso (Positioncal.FinOverPower <> 0 Or Positioncal.FinPowderRed <> 0) Then
+					power = 0.0025 * CDbl(Positioncal.LaserPowerFin) * (1.0 + CDbl(Positioncal.FinOverPower) / 100.0) + -1.1111
+					feed = 0.1 * (Positioncal.PowderFeed * CDbl((100 - Positioncal.FinPowderRed)) / 100.0)
+					mainprogtxt = String.Concat(New String() {mainprogtxt, "ARCCTE AC=", (feed * 100.0).ToString("#0"), " AV=", power.ToString("#0"), " AN3=", beamdia.ToString("#0.0"), " DIS=", Positioncal.FinOverPowerDis.ToString("#0.0"), vbCrLf})
+				End If
+				If (If((-If(((i = inipoints + pointnumber + finpoints + 3) > False), 1S, 0S)), 1S, 0S) And Positioncal.MeanderFlg) <> 0S Then
+					mainprogtxt += "WVOF" & vbCrLf
+				End If
 
 			Next
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "MOVL C", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "END" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "DI LEVEL= 2" & vbCrLf & "JUMP *END" & vbCrLf & "*QVERROR" & vbCrLf & "*END" & vbCrLf & "ARCOF" & vbCrLf & "DOUT OG#(1) 0" & vbCrLf & "DOUT OG#(2) 0" & vbCrLf & "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 RF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 ", (Positioncal.IniZAxisOffset * 1000.0).ToString("#0"), vbCrLf & "JUMP *LABEL3 IF D000<=", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL3" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "GETE D000 P000 (1)" & vbCrLf & "ADD D000 ", (Positioncal.IniXAxisOffset * 1000.0).ToString("#0"), vbCrLf & "SETE P000 (1) D000" & vbCrLf & "MOVL P000 V=", Positioncal.ApproachSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "MOVL C", (inipoints + pointnumber + finpoints + 4).ToString("0000#"), " V=", Positioncal.IdleSpeed.ToString("#0.0"), " PL=0" & vbCrLf & "END"})
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "hostmov.jbi", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 				Positioncal.ControlGroup = 1S
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
@@ -2620,7 +2620,7 @@ Namespace WindowsApplication1
 
 		' Token: 0x0600056A RID: 1386 RVA: 0x000158E4 File Offset: 0x00013CE4
 		Public Function vectrot(ByRef axis As Double(), ByRef vector As Double(), ByRef angle As Double) As Double()
-			Return New Double() { (Math.Cos(angle) + Math.Pow(axis(0), 2.0) * (1.0 - Math.Cos(angle))) * vector(0) + (axis(0) * axis(1) * (1.0 - Math.Cos(angle)) - axis(2) * Math.Sin(angle)) * vector(1) + (axis(0) * axis(2) * (1.0 - Math.Cos(angle)) + axis(1) * Math.Sin(angle)) * vector(2), (axis(1) * axis(0) * (1.0 - Math.Cos(angle)) + axis(2) * Math.Sin(angle)) * vector(0) + (Math.Cos(angle) + Math.Pow(axis(1), 2.0) * (1.0 - Math.Cos(angle))) * vector(1) + (axis(1) * axis(2) * (1.0 - Math.Cos(angle)) - axis(0) * Math.Sin(angle)) * vector(2), (axis(2) * axis(0) * (1.0 - Math.Cos(angle)) - axis(1) * Math.Sin(angle)) * vector(0) + (axis(2) * axis(1) * (1.0 - Math.Cos(angle)) + axis(0) * Math.Sin(angle)) * vector(1) + (Math.Cos(angle) + Math.Pow(axis(2), 2.0) * (1.0 - Math.Cos(angle))) * vector(2) }
+			Return New Double() {(Math.Cos(angle) + Math.Pow(axis(0), 2.0) * (1.0 - Math.Cos(angle))) * vector(0) + (axis(0) * axis(1) * (1.0 - Math.Cos(angle)) - axis(2) * Math.Sin(angle)) * vector(1) + (axis(0) * axis(2) * (1.0 - Math.Cos(angle)) + axis(1) * Math.Sin(angle)) * vector(2), (axis(1) * axis(0) * (1.0 - Math.Cos(angle)) + axis(2) * Math.Sin(angle)) * vector(0) + (Math.Cos(angle) + Math.Pow(axis(1), 2.0) * (1.0 - Math.Cos(angle))) * vector(1) + (axis(1) * axis(2) * (1.0 - Math.Cos(angle)) - axis(0) * Math.Sin(angle)) * vector(2), (axis(2) * axis(0) * (1.0 - Math.Cos(angle)) - axis(1) * Math.Sin(angle)) * vector(0) + (axis(2) * axis(1) * (1.0 - Math.Cos(angle)) + axis(0) * Math.Sin(angle)) * vector(1) + (Math.Cos(angle) + Math.Pow(axis(2), 2.0) * (1.0 - Math.Cos(angle))) * vector(2)}
 		End Function
 
 		' Token: 0x0600056B RID: 1387 RVA: 0x00015AAC File Offset: 0x00013EAC
@@ -2692,7 +2692,7 @@ Namespace WindowsApplication1
 
 		' Token: 0x0600056F RID: 1391 RVA: 0x00016068 File Offset: 0x00014468
 		Public Function Rotmat(ByRef tiltnormal As Double(), ByRef spindnormal As Double(), ByRef angle As Double) As Double(,)
-			Dim CoordX As Double() = New Double() { 0.0, 0.0, 0.0 }
+			Dim CoordX As Double() = New Double() {0.0, 0.0, 0.0}
 			Dim R As Double(,) = New Double(2, 2) {}
 			Dim num As Double = 1.5707963267948966 + angle
 			Dim CoordZ As Double() = Positioncal.vectrot(tiltnormal, Positioncal.Spindnormalhor, num)
@@ -2737,7 +2737,7 @@ Namespace WindowsApplication1
 				Dim num5 As Integer = 0
 				Dim num6 As Integer = arrays.Length - 1
 				For count2 As Integer = num5 To num6
-					values.Add(RuntimeHelpers.GetObjectValue(NewLateBinding.LateIndexGet(arrays(count2), New Object() { index }, Nothing)))
+					values.Add(RuntimeHelpers.GetObjectValue(NewLateBinding.LateIndexGet(arrays(count2), New Object() {index}, Nothing)))
 				Next
 				result.Rows.Add(values.ToArray())
 			Next
@@ -2857,7 +2857,7 @@ Namespace WindowsApplication1
 		Public Const StationAxisNo As Integer = 2
 
 		' Token: 0x040001E1 RID: 481
-		Public HomePos As Integer() = New Integer() { 0, -114487, -86924, 0, -5368, 0 }
+		Public HomePos As Integer() = New Integer() {0, -114487, -86924, 0, -5368, 0}
 
 		' Token: 0x040001E2 RID: 482
 		Public Const LaserPowerCalibFactorA As Double = 0.0025
@@ -2872,13 +2872,13 @@ Namespace WindowsApplication1
 		Public Const LaserBeamCalibFactorB As Double = -4.4599
 
 		' Token: 0x040001E6 RID: 486
-		Public StationCalib As Double() = New Double() { 1052.246678461, -1057.3704219394, 69.6170492284471 }
+		Public StationCalib As Double() = New Double() {1052.246678461, -1057.3704219394, 69.6170492284471}
 
 		' Token: 0x040001E7 RID: 487
-		Public Spindnormalhor As Double() = New Double() { 0.00142159179501997, 0.999998937401028, -0.000322914204078179 }
+		Public Spindnormalhor As Double() = New Double() {0.00142159179501997, 0.999998937401028, -0.000322914204078179}
 
 		' Token: 0x040001E8 RID: 488
-		Public Tiltnormal As Double() = New Double() { 0.999921270031643, -0.00268781499345932, -0.012256809897608 }
+		Public Tiltnormal As Double() = New Double() {0.999921270031643, -0.00268781499345932, -0.012256809897608}
 
 		' Token: 0x040001E9 RID: 489
 		Public Const Chuckdist As Double = 443.737

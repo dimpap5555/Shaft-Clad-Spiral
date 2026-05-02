@@ -9,7 +9,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000019 RID: 25
-	<DesignerGenerated()>
 	Public Partial Class PLANPARAM
 		Inherits Form
 

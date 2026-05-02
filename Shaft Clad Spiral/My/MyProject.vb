@@ -16,7 +16,7 @@ Namespace WindowsApplication1.My
 	' Token: 0x02000004 RID: 4
 	<GeneratedCode("MyTemplate", "8.0.0.0")>
 	<HideModuleName()>
-	Friend NotInheritable Module MyProject
+	Friend Module MyProject
 		' Token: 0x17000001 RID: 1
 		' (get) Token: 0x06000006 RID: 6 RVA: 0x00016B3C File Offset: 0x00014F3C
 		<HelpKeyword("My.Computer")>
@@ -466,7 +466,7 @@ Namespace WindowsApplication1.My
 
 			' Token: 0x0600002F RID: 47 RVA: 0x0001710C File Offset: 0x0001550C
 			<DebuggerHidden()>
-			Private Shared Function Create__Instance__(Of T As{Form, New})(Instance As T) As T
+			Private Shared Function Create__Instance__(Of T As {Form, New})(Instance As T) As T
 				If Instance Is Nothing OrElse Instance.IsDisposed Then
 					If MyProject.MyForms.m_FormBeingCreated IsNot Nothing Then
 						If MyProject.MyForms.m_FormBeingCreated.ContainsKey(GetType(T)) Then
@@ -479,7 +479,7 @@ Namespace WindowsApplication1.My
 					Try
 						Return Activator.CreateInstance(Of T)()
 					Catch ex As TargetInvocationException When ex.InnerException IsNot Nothing
-						Dim BetterMessage As String = Utils.GetResourceString("WinForms_SeeInnerException", New String() { ex.InnerException.Message })
+						Dim BetterMessage As String = Utils.GetResourceString("WinForms_SeeInnerException", New String() {ex.InnerException.Message})
 						Throw New InvalidOperationException(BetterMessage, ex.InnerException)
 					Finally
 						MyProject.MyForms.m_FormBeingCreated.Remove(GetType(T))

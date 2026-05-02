@@ -8,7 +8,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000010 RID: 16
-	<DesignerGenerated()>
 	Public Partial Class IObox
 		Inherits Form
 

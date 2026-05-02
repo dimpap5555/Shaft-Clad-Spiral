@@ -10,7 +10,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000014 RID: 20
-	<DesignerGenerated()>
 	Public Partial Class MPosıtıonupload
 		Inherits Form
 

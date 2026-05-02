@@ -9,7 +9,6 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x0200001C RID: 28
-	<DesignerGenerated()>
 	Public Partial Class Posıtıonupload
 		Inherits Form
 

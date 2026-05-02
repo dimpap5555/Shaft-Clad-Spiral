@@ -1,15 +1,20 @@
 ﻿Imports System
+Imports System.Collections
+Imports System.Data
 Imports System.Drawing
 Imports System.IO
+Imports System.Text
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.CompilerServices
-Imports WindowsApplication1.My﻿
 Imports WindowsApplication1.WindowsApplication1
+Imports WindowsApplication1.WindowsApplication1.My
 
 
 Partial Public Class Form1
     Inherits Form
+
+    Private formatstat As Short
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Timer1.Start()
@@ -992,10 +997,6 @@ Partial Public Class Form1
                         MyProject.Computer.FileSystem.CopyFile(foundfile, Application.StartupPath + "\" + MyProject.Computer.FileSystem.GetName(foundfile), True)
                     Next
                 Finally
-                    Dim enumerator As IEnumerator(Of String)
-                    If enumerator IsNot Nothing Then
-                        enumerator.Dispose()
-                    End If
                 End Try
             Catch ex As Exception
                 MessageBox.Show("Cannot copy file on disk. Original error: " + ex.Message)

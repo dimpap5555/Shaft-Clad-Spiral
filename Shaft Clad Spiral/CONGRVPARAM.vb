@@ -7,11 +7,10 @@ Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.CompilerServices
-Imports WindowsApplication1.My
+Imports WindowsApplication1.WindowsApplication1.My
 
 Namespace WindowsApplication1
 	' Token: 0x0200000A RID: 10
-	<DesignerGenerated()>
 	Public Partial Class CONGRVPARAM
 		Inherits Form
 

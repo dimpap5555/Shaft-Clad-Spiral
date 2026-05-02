@@ -5,7 +5,7 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace WindowsApplication1
 	' Token: 0x02000020 RID: 32
-	Friend NotInheritable Module Returnhome
+	Friend Module Returnhome
 		' Token: 0x060005E5 RID: 1509 RVA: 0x000167C0 File Offset: 0x00014BC0
 		<MethodImpl(MethodImplOptions.NoInlining Or MethodImplOptions.NoOptimization)>
 		Public Sub Rethome(CntrlGrp As Short)
@@ -32,7 +32,7 @@ Namespace WindowsApplication1
 			If CntrlGrp = 0S Then
 				mainprogtxt += "CALL JOB:STRESET" & vbCrLf
 			End If
-			mainprogtxt = String.Concat(New String() { mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 BF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 300000" & vbCrLf & "JUMP *LABEL IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=100.0" })
+			mainprogtxt = String.Concat(New String() {mainprogtxt, "GETS PX000 $PX000" & vbCrLf & "CNVRT PX000 PX000 BF" & vbCrLf & "GETE D000 P000 (3)" & vbCrLf & "ADD D000 300000" & vbCrLf & "JUMP *LABEL IF D000<", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "SET D000 ", Positioncal.MaxZRobotPos.ToString("#"), vbCrLf & "*LABEL" & vbCrLf & "SETE P000 (3) D000" & vbCrLf & "MOVL P000 V=100.0"})
 			If CntrlGrp = 0S Then
 				mainprogtxt += " +MOVJ EX000" & vbCrLf
 			Else
@@ -47,9 +47,9 @@ Namespace WindowsApplication1
 			mainprogtxt += "EI LEVEL= 1" & vbCrLf & "END"
 			Try
 				FileSystem.FileOpen(1, Positioncal.BasePath + "RETHOME.JBI", OpenMode.Output, OpenAccess.[Default], OpenShare.[Default], -1)
-				FileSystem.PrintLine(1, New Object() { headertxt })
-				FileSystem.PrintLine(1, New Object() { mainprogtxt })
-				FileSystem.FileClose(New Integer() { 1 })
+				FileSystem.PrintLine(1, New Object() {headertxt})
+				FileSystem.PrintLine(1, New Object() {mainprogtxt})
+				FileSystem.FileClose(New Integer() {1})
 			Catch ex As Exception
 				Interaction.MsgBox("Job saving has failed due to the following reason: " + ex.Message, MsgBoxStyle.Exclamation, Nothing)
 			End Try

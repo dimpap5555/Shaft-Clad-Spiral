@@ -17,7 +17,7 @@ Namespace WindowsApplication1.My.Resources
 	<HideModuleName()>
 	<CompilerGenerated()>
 	<GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")>
-	Friend NotInheritable Module Resources
+	Friend Module Resources
 		''' <summary>
 		'''   Returns the cached ResourceManager instance used by this class.
 		''' </summary>
