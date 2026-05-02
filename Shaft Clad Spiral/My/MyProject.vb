@@ -83,8 +83,8 @@ Namespace WindowsApplication1.My
 		Private m_MyWebServicesObjectProvider As MyProject.ThreadSafeObjectProvider(Of MyProject.MyWebServices) = New MyProject.ThreadSafeObjectProvider(Of MyProject.MyWebServices)()
 
 		' Token: 0x02000005 RID: 5
-		<EditorBrowsable(EditorBrowsableState.Never)>
-		<MyGroupCollection("System.Windows.Forms.Form", "Create__Instance__", "Dispose__Instance__", "My.MyProject.Forms")>
+		'<EditorBrowsable(EditorBrowsableState.Never)>
+		'<MyGroupCollection("System.Windows.Forms.Form", "Create__Instance__", "Dispose__Instance__", "")>
 		Friend NotInheritable Class MyForms
 			' Token: 0x17000006 RID: 6
 			' (get) Token: 0x0600000B RID: 11 RVA: 0x00016BB4 File Offset: 0x00014FB4
@@ -516,7 +516,7 @@ Namespace WindowsApplication1.My
 
 			' Token: 0x06000034 RID: 52 RVA: 0x00017278 File Offset: 0x00015678
 			<EditorBrowsable(EditorBrowsableState.Never)>
-			Friend Function [GetType]() As Type
+			Friend Overloads Function [GetType]() As Type
 				Return GetType(MyProject.MyForms)
 			End Function
 
@@ -606,7 +606,7 @@ Namespace WindowsApplication1.My
 			' Token: 0x06000038 RID: 56 RVA: 0x000172D4 File Offset: 0x000156D4
 			<EditorBrowsable(EditorBrowsableState.Never)>
 			<DebuggerHidden()>
-			Friend Function [GetType]() As Type
+			Friend Overloads Function [GetType]() As Type
 				Return GetType(MyProject.MyWebServices)
 			End Function
 
