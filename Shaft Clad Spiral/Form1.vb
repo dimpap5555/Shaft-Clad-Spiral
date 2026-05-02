@@ -10,14 +10,16 @@ Namespace WindowsApplication1
     Public Partial Class Form1
         Inherits Form
 
+        Private formatstat As Short
+
         Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         			Me.Timer1.Start()
         			Me.Timer1.Interval = 1000
-        			If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\settings.txt") Then
+        			If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\settings.txt") Then
         				Dim fs As FileStream = New FileStream(Application.StartupPath + "\settings.txt", FileMode.Open)
         				Dim r As StreamReader = New StreamReader(fs)
         				Positioncal.BasePath = r.ReadLine()
-        				If Not MyProject.Computer.FileSystem.DirectoryExists(Positioncal.BasePath) Then
+        				If Not Global.WindowsApplication1.My.MyProject.Computer.FileSystem.DirectoryExists(Positioncal.BasePath) Then
         					Interaction.MsgBox("The base directory " + Positioncal.BasePath + " does not exist or is not accessible. C:\ will be used instead.", MsgBoxStyle.OkOnly, Nothing)
         					Positioncal.BasePath = "c:\"
         				End If
@@ -27,7 +29,7 @@ Namespace WindowsApplication1
         				Positioncal.BasePath = "c:\"
         				Positioncal.ipaddress = "192.168.002.002"
         			End If
-        			If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\miscsettings.txt") Then
+        			If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\miscsettings.txt") Then
         				Dim fs2 As FileStream = New FileStream(Application.StartupPath + "\miscsettings.txt", FileMode.Open)
         				Dim r2 As StreamReader = New StreamReader(fs2)
         				Positioncal.IdleSpeed = Conversions.ToDouble(r2.ReadLine())
@@ -66,7 +68,7 @@ Namespace WindowsApplication1
         				Positioncal.MaxZRobotPos = 555000.0
         				Positioncal.DirectionFlg = 1
         			End If
-        			If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Processsettings.txt") Then
+        			If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Processsettings.txt") Then
         				Dim fs3 As FileStream = New FileStream(Application.StartupPath + "\Processsettings.txt", FileMode.Open)
         				Dim r3 As StreamReader = New StreamReader(fs3)
         				Positioncal.LaserPowerIni = Conversions.ToInteger(r3.ReadLine())
@@ -111,7 +113,7 @@ Namespace WindowsApplication1
         			Me.processcycle.Items.Add("Conical Groove")
         			Me.processcycle.Items.Add("3D Clad")
         			Me.processcycle.Enabled = False
-        			MyProject.Forms.Processsetup.Enabled = True
+        			Global.WindowsApplication1.My.MyProject.Forms.Processsetup.Enabled = True
         			Me.run.Text = "Stopped"
         			Me.run.Enabled = False
         			Me.hold.Enabled = False
@@ -227,7 +229,7 @@ Namespace WindowsApplication1
         			Select Case Positioncal.ProcCycle
         				Case 0S
         					Dim form2rect As Rectangle = New Rectangle(50, 100, 700, 570)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Scladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Scladparam.txt") Then
         						Dim fs As FileStream = New FileStream(Application.StartupPath + "\Scladparam.txt", FileMode.Open)
         						Dim r As StreamReader = New StreamReader(fs)
         						Positioncal.Diameter = Conversions.ToDouble(r.ReadLine())
@@ -265,9 +267,9 @@ Namespace WindowsApplication1
         						Positioncal.MeanderFlg = 0S
         						Positioncal.CurrPos = 0S
         					End If
-        					MyProject.Forms.SPARAM.DesktopBounds = form2rect
-        					MyProject.Forms.SPARAM.ShowDialog()
-        					If MyProject.Forms.SPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.SPARAM.DesktopBounds = form2rect
+        					Global.WindowsApplication1.My.MyProject.Forms.SPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.SPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Me.SaveAsToolStripMenuItem.Enabled = True
         						Positioncal.crankclad2(Positioncal.Diameter, 0.01, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, 0.0, 0.0, 1.0, 1, 0.0, 0.0, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, Positioncal.ToolOffset, 0S, Me.Handle.ToInt32())
@@ -279,7 +281,7 @@ Namespace WindowsApplication1
         					End If
         				Case 1S
         					Dim form2rect2 As Rectangle = New Rectangle(50, 100, 700, 650)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Keycladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Keycladparam.txt") Then
         						Dim fs2 As FileStream = New FileStream(Application.StartupPath + "\Keycladparam.txt", FileMode.Open)
         						Dim r2 As StreamReader = New StreamReader(fs2)
         						Positioncal.Diameter = Conversions.ToDouble(r2.ReadLine())
@@ -319,9 +321,9 @@ Namespace WindowsApplication1
         						Positioncal.StationPosition = 0
         						Positioncal.CurrPos = 0S
         					End If
-        					MyProject.Forms.KEYPARAM.DesktopBounds = form2rect2
-        					MyProject.Forms.KEYPARAM.ShowDialog()
-        					If MyProject.Forms.KEYPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.KEYPARAM.DesktopBounds = form2rect2
+        					Global.WindowsApplication1.My.MyProject.Forms.KEYPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.KEYPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Me.SaveAsToolStripMenuItem.Enabled = True
         						Positioncal.keyholeclad(Positioncal.Diameter, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.KeyDistance, Positioncal.KeyWidth, Positioncal.KeyLength, Positioncal.KeyAngle, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.IniOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, Me.Handle.ToInt32())
@@ -333,7 +335,7 @@ Namespace WindowsApplication1
         					End If
         				Case 2S
         					Dim form2rect3 As Rectangle = New Rectangle(50, 100, 700, 600)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Vcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Vcladparam.txt") Then
         						Dim fs3 As FileStream = New FileStream(Application.StartupPath + "\Vcladparam.txt", FileMode.Open)
         						Dim r3 As StreamReader = New StreamReader(fs3)
         						Positioncal.Diameter = Conversions.ToDouble(r3.ReadLine())
@@ -373,9 +375,9 @@ Namespace WindowsApplication1
         						Positioncal.CladdingDir = 1
         						Positioncal.CurrPos = 0S
         					End If
-        					MyProject.Forms.VPARAM.DesktopBounds = form2rect3
-        					MyProject.Forms.VPARAM.ShowDialog()
-        					If MyProject.Forms.VPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.VPARAM.DesktopBounds = form2rect3
+        					Global.WindowsApplication1.My.MyProject.Forms.VPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.VPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Positioncal.valveclad2(Positioncal.Diameter, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, 0.0, 0.0, 0.0, 1, 0.0, 0.0, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.StationPosition, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, If((-If((Positioncal.ValveFlg > False), 1, 0)), 1, 0), Positioncal.ToolOffset, 0S, Me.Handle.ToInt32())
         						Me.SaveAsToolStripMenuItem.Enabled = True
@@ -387,7 +389,7 @@ Namespace WindowsApplication1
         					End If
         				Case 3S
         					Dim form2rect4 As Rectangle = New Rectangle(50, 100, 700, 570)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Crcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Crcladparam.txt") Then
         						Dim fs4 As FileStream = New FileStream(Application.StartupPath + "\Crcladparam.txt", FileMode.Open)
         						Dim r4 As StreamReader = New StreamReader(fs4)
         						Positioncal.Diameter = Conversions.ToDouble(r4.ReadLine())
@@ -427,9 +429,9 @@ Namespace WindowsApplication1
         						Positioncal.CladdingDir = 1
         						Positioncal.CurrPos = 0S
         					End If
-        					MyProject.Forms.CRPARAM.DesktopBounds = form2rect4
-        					MyProject.Forms.CRPARAM.ShowDialog()
-        					If MyProject.Forms.CRPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.CRPARAM.DesktopBounds = form2rect4
+        					Global.WindowsApplication1.My.MyProject.Forms.CRPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.CRPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Positioncal.crankclad2(Positioncal.Diameter, Positioncal.CrankThrow, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, 0.0, 0.0, 1.0, 1, 0.0, 0.0, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, Positioncal.ToolOffset, 1S, Me.Handle.ToInt32())
         						Me.SaveAsToolStripMenuItem.Enabled = True
@@ -440,7 +442,7 @@ Namespace WindowsApplication1
         						End If
         					End If
         				Case 4S
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Pcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Pcladparam.txt") Then
         						Dim fs5 As FileStream = New FileStream(Application.StartupPath + "\Pcladparam.txt", FileMode.Open)
         						Dim r5 As StreamReader = New StreamReader(fs5)
         						Positioncal.Length = Conversions.ToDouble(r5.ReadLine())
@@ -473,9 +475,9 @@ Namespace WindowsApplication1
         						Positioncal.CurrPos = 0S
         					End If
         					Dim form2rect5 As Rectangle = New Rectangle(50, 100, 700, 570)
-        					MyProject.Forms.PPARAM.DesktopBounds = form2rect5
-        					MyProject.Forms.PPARAM.ShowDialog()
-        					If MyProject.Forms.PPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.PPARAM.DesktopBounds = form2rect5
+        					Global.WindowsApplication1.My.MyProject.Forms.PPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.PPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Positioncal.Planeclad(Positioncal.Length, Positioncal.Width1, Positioncal.Xpos, Positioncal.Ypos, Positioncal.Zpos, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.PostureAngle, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.ToolOffset, Me.Handle.ToInt32())
         						Me.SaveAsToolStripMenuItem.Enabled = True
@@ -486,7 +488,7 @@ Namespace WindowsApplication1
         						End If
         					End If
         				Case 5S
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Bcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Bcladparam.txt") Then
         						Dim fs6 As FileStream = New FileStream(Application.StartupPath + "\Bcladparam.txt", FileMode.Open)
         						Dim r6 As StreamReader = New StreamReader(fs6)
         						Positioncal.Diameter = Conversions.ToDouble(r6.ReadLine())
@@ -525,9 +527,9 @@ Namespace WindowsApplication1
         						Positioncal.CurrPos = 0S
         					End If
         					Dim form2rect6 As Rectangle = New Rectangle(50, 100, 700, 570)
-        					MyProject.Forms.BPARAM.DesktopBounds = form2rect6
-        					MyProject.Forms.BPARAM.ShowDialog()
-        					If MyProject.Forms.BPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.BPARAM.DesktopBounds = form2rect6
+        					Global.WindowsApplication1.My.MyProject.Forms.BPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.BPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Positioncal.boreclad(Positioncal.Diameter, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.StationPosition, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, Positioncal.ToolOffset, Me.Handle.ToInt32())
         						Me.SaveAsToolStripMenuItem.Enabled = True
@@ -538,7 +540,7 @@ Namespace WindowsApplication1
         						End If
         					End If
         				Case 6S
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Pocketcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Pocketcladparam.txt") Then
         						Dim fs7 As FileStream = New FileStream(Application.StartupPath + "\Pocketcladparam.txt", FileMode.Open)
         						Dim r7 As StreamReader = New StreamReader(fs7)
         						Positioncal.Diameter = Conversions.ToDouble(r7.ReadLine())
@@ -574,9 +576,9 @@ Namespace WindowsApplication1
         					End If
         					Positioncal.MeanderFlg = 0S
         					Dim form2rect7 As Rectangle = New Rectangle(50, 100, 700, 570)
-        					MyProject.Forms.POCKETPARAM.DesktopBounds = form2rect7
-        					MyProject.Forms.POCKETPARAM.ShowDialog()
-        					If MyProject.Forms.POCKETPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.POCKETPARAM.DesktopBounds = form2rect7
+        					Global.WindowsApplication1.My.MyProject.Forms.POCKETPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.POCKETPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Positioncal.pocketclad(Positioncal.Diameter, Positioncal.Width1, Positioncal.Xpos, Positioncal.Ypos, Positioncal.Zpos, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.InitialAng, Positioncal.ToolOffset, Me.Handle.ToInt32())
         						Me.SaveAsToolStripMenuItem.Enabled = True
@@ -588,7 +590,7 @@ Namespace WindowsApplication1
         					End If
         				Case 7S
         					Dim form2rect8 As Rectangle = New Rectangle(50, 100, 1000, 571)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Groovecladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Groovecladparam.txt") Then
         						Dim fs8 As FileStream = New FileStream(Application.StartupPath + "\Groovecladparam.txt", FileMode.Open)
         						Dim r8 As StreamReader = New StreamReader(fs8)
         						Positioncal.Diameter = Conversions.ToDouble(r8.ReadLine())
@@ -640,9 +642,9 @@ Namespace WindowsApplication1
         						Positioncal.CurrPos = 0S
         						Positioncal.Rockangvar = 0S
         					End If
-        					MyProject.Forms.GRVPARAM.DesktopBounds = form2rect8
-        					MyProject.Forms.GRVPARAM.ShowDialog()
-        					If MyProject.Forms.GRVPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.GRVPARAM.DesktopBounds = form2rect8
+        					Global.WindowsApplication1.My.MyProject.Forms.GRVPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.GRVPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Me.SaveAsToolStripMenuItem.Enabled = True
         						Positioncal.crankclad2(Positioncal.Diameter, 0.01, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.Leftangle, Positioncal.Rightangle, Positioncal.Layerheight, Positioncal.Layernumber, CDbl(Positioncal.Intoverweld), Positioncal.Rockangle, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, Positioncal.ToolOffset, Positioncal.Rockangvar, Me.Handle.ToInt32())
@@ -654,7 +656,7 @@ Namespace WindowsApplication1
         					End If
         				Case 8S
         					Dim form2rect9 As Rectangle = New Rectangle(50, 100, 1000, 571)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Congroovecladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\Congroovecladparam.txt") Then
         						Dim fs9 As FileStream = New FileStream(Application.StartupPath + "\Congroovecladparam.txt", FileMode.Open)
         						Dim r9 As StreamReader = New StreamReader(fs9)
         						Positioncal.Diameter = Conversions.ToDouble(r9.ReadLine())
@@ -706,9 +708,9 @@ Namespace WindowsApplication1
         						Positioncal.CurrPos = 0S
         						Positioncal.ValveFlg = True
         					End If
-        					MyProject.Forms.CONGRVPARAM.DesktopBounds = form2rect9
-        					MyProject.Forms.CONGRVPARAM.ShowDialog()
-        					If MyProject.Forms.CONGRVPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.CONGRVPARAM.DesktopBounds = form2rect9
+        					Global.WindowsApplication1.My.MyProject.Forms.CONGRVPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.CONGRVPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Me.SaveAsToolStripMenuItem.Enabled = True
         						Positioncal.valveclad2(Positioncal.Diameter, Positioncal.Width1, Positioncal.Distance, Positioncal.Pitch, Positioncal.ProcessSpeed, Positioncal.Leftangle, Positioncal.Rightangle, Positioncal.Layerheight, Positioncal.Layernumber, CDbl(Positioncal.Intoverweld), Positioncal.Rockangle, Positioncal.PostureAngle, Positioncal.ConeAngle, Positioncal.StationPosition, Positioncal.IniOverWeld, Positioncal.FinOverWeld, Positioncal.MeanderAmp, Positioncal.MeanderFlg, Positioncal.InitialAng, If((-If((Positioncal.ValveFlg > False), 1, 0)), 1, 0), Positioncal.ToolOffset, Positioncal.Rockangvar, Me.Handle.ToInt32())
@@ -720,7 +722,7 @@ Namespace WindowsApplication1
         					End If
         				Case 9S
         					Dim form2rect10 As Rectangle = New Rectangle(50, 100, 1000, 500)
-        					If MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\3Dcladparam.txt") Then
+        					If Global.WindowsApplication1.My.MyProject.Computer.FileSystem.FileExists(Application.StartupPath + "\3Dcladparam.txt") Then
         						Dim fs10 As FileStream = New FileStream(Application.StartupPath + "\3Dcladparam.txt", FileMode.Open)
         						Dim r10 As StreamReader = New StreamReader(fs10)
         						Dim table As DataTable = New DataTable("table")
@@ -796,9 +798,9 @@ Namespace WindowsApplication1
         						Positioncal.ConstBeamFlg = 0S
         						Positioncal.Movementtype = 0S
         					End If
-        					MyProject.Forms.THREEDCLADPARAM.DesktopBounds = form2rect10
-        					MyProject.Forms.THREEDCLADPARAM.ShowDialog()
-        					If MyProject.Forms.THREEDCLADPARAM.DialogResult = DialogResult.OK Then
+        					Global.WindowsApplication1.My.MyProject.Forms.THREEDCLADPARAM.DesktopBounds = form2rect10
+        					Global.WindowsApplication1.My.MyProject.Forms.THREEDCLADPARAM.ShowDialog()
+        					If Global.WindowsApplication1.My.MyProject.Forms.THREEDCLADPARAM.DialogResult = DialogResult.OK Then
         						Me.formatstat = 1S
         						Me.SaveAsToolStripMenuItem.Enabled = True
         						Dim processSpeed As Double = Positioncal.ProcessSpeed
@@ -817,9 +819,9 @@ Namespace WindowsApplication1
 
         Private Sub Procsetupbtn_Click(sender As Object, e As EventArgs) Handles Procsetupbtn.Click
         			Dim form2rect As Rectangle = New Rectangle(50, 100, 580, 440)
-        			MyProject.Forms.Processsetup.DesktopBounds = form2rect
-        			MyProject.Forms.Processsetup.ShowDialog()
-        			If MyProject.Forms.Processsetup.DialogResult = DialogResult.OK Then
+        			Global.WindowsApplication1.My.MyProject.Forms.Processsetup.DesktopBounds = form2rect
+        			Global.WindowsApplication1.My.MyProject.Forms.Processsetup.ShowDialog()
+        			If Global.WindowsApplication1.My.MyProject.Forms.Processsetup.DialogResult = DialogResult.OK Then
         				processparam.paramset(Positioncal.LaserPowerIni, Positioncal.PowderFeed, CInt(Positioncal.PowderJar), Me.Handle.ToInt32())
         				Me.processcycle.Enabled = True
         				If Positioncal.ConectStat = 1S And Me.processcycle.SelectedIndex >= 0 Then
@@ -831,13 +833,13 @@ Namespace WindowsApplication1
         		End Sub
 
         Private Sub ConnectionSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionSettingsToolStripMenuItem.Click
-        			MyProject.Forms.ConnectionSettings.ShowDialog()
+        			Global.WindowsApplication1.My.MyProject.Forms.ConnectionSettings.ShowDialog()
         		End Sub
 
         Private Sub MisselaneousSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MisselaneousSettingsToolStripMenuItem.Click
         			Dim form2rect As Rectangle = New Rectangle(50, 100, 668, 510)
-        			MyProject.Forms.Miscsettings.DesktopBounds = form2rect
-        			MyProject.Forms.Miscsettings.ShowDialog()
+        			Global.WindowsApplication1.My.MyProject.Forms.Miscsettings.DesktopBounds = form2rect
+        			Global.WindowsApplication1.My.MyProject.Forms.Miscsettings.ShowDialog()
         			If Positioncal.ConectStat = 1S And Me.processcycle.SelectedIndex >= 0 Then
         				Me.Download.Enabled = True
         			Else
@@ -890,21 +892,21 @@ Namespace WindowsApplication1
         			savefiledialog.Filter = "project files (*.rbp)|*.rbp"
         			If savefiledialog.ShowDialog() = DialogResult.OK Then
         				Try
-        					fs = MyProject.Computer.FileSystem.OpenTextFileWriter(savefiledialog.FileName, False)
+        					fs = Global.WindowsApplication1.My.MyProject.Computer.FileSystem.OpenTextFileWriter(savefiledialog.FileName, False)
         					If fs IsNot Nothing Then
         						fs.WriteLine(projparam)
         						Positioncal.CurProjPath = savefiledialog.FileName
         						Dim CurProjDir As String = Strings.Left(savefiledialog.FileName, Strings.Len(savefiledialog.FileName) - 4)
-        						MyProject.Computer.FileSystem.CreateDirectory(CurProjDir)
-        						MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + settingfile, CurProjDir + settingfile, True)
-        						MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\miscsettings.txt", CurProjDir + "\miscsettings.txt", True)
-        						MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\processsettings.txt", CurProjDir + "\processsettings.txt", True)
+        						Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CreateDirectory(CurProjDir)
+        						Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + settingfile, CurProjDir + settingfile, True)
+        						Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\miscsettings.txt", CurProjDir + "\miscsettings.txt", True)
+        						Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\processsettings.txt", CurProjDir + "\processsettings.txt", True)
         						If Positioncal.ProcCycle = 9S Then
-        							MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\tempfile.txt", CurProjDir + "\positions.txt", True)
+        							Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\tempfile.txt", CurProjDir + "\positions.txt", True)
         						End If
         						Me.SaveToolStripMenuItem.Enabled = True
         						Me.CloseProjectToolStripMenuItem.Enabled = True
-        						MyBase.Text = "Robot Control - " + MyProject.Computer.FileSystem.GetName(savefiledialog.FileName)
+        						MyBase.Text = "Robot Control - " + Global.WindowsApplication1.My.MyProject.Computer.FileSystem.GetName(savefiledialog.FileName)
         					End If
         				Catch ex As Exception
         					MessageBox.Show("Cannot create file on disk. Original error: " + ex.Message)
@@ -956,15 +958,15 @@ Namespace WindowsApplication1
         			projparam += settingsread.ReadToEnd()
         			settingsread.Close()
         			Try
-        				fs = MyProject.Computer.FileSystem.OpenTextFileWriter(Positioncal.CurProjPath, False)
+        				fs = Global.WindowsApplication1.My.MyProject.Computer.FileSystem.OpenTextFileWriter(Positioncal.CurProjPath, False)
         				If fs IsNot Nothing Then
         					fs.WriteLine(projparam)
         					Dim CurProjDir As String = Strings.Left(Positioncal.CurProjPath, Strings.Len(Positioncal.CurProjPath) - 4)
-        					MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + settingfile, CurProjDir + settingfile, True)
-        					MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\miscsettings.txt", CurProjDir + "\miscsettings.txt", True)
-        					MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\processsettings.txt", CurProjDir + "\processsettings.txt", True)
+        					Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + settingfile, CurProjDir + settingfile, True)
+        					Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\miscsettings.txt", CurProjDir + "\miscsettings.txt", True)
+        					Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\processsettings.txt", CurProjDir + "\processsettings.txt", True)
         					If Positioncal.ProcCycle = 9S Then
-        						MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\tempfile.txt", CurProjDir + "\positions.txt", True)
+        						Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(Application.StartupPath + "\tempfile.txt", CurProjDir + "\positions.txt", True)
         					End If
         				End If
         			Catch ex As Exception
@@ -981,20 +983,16 @@ Namespace WindowsApplication1
         			Dim table As DataTable = New DataTable("table")
         			OpenFileDialog.Filter = "Robot Project file|*.rbp"
         			If OpenFileDialog.ShowDialog() = DialogResult.OK Then
-        				Dim projreader As StreamReader = MyProject.Computer.FileSystem.OpenTextFileReader(OpenFileDialog.FileName, Encoding.ASCII)
+        				Dim projreader As StreamReader = Global.WindowsApplication1.My.MyProject.Computer.FileSystem.OpenTextFileReader(OpenFileDialog.FileName, Encoding.ASCII)
         				Positioncal.ProjParam = projreader.ReadLine()
         				projreader.Close()
         				Dim ProjDir As String = Strings.Left(OpenFileDialog.FileName, Strings.Len(OpenFileDialog.FileName) - 4) + "\"
         				Try
         					Try
-        						For Each foundfile As String In MyProject.Computer.FileSystem.GetFiles(ProjDir)
-        							MyProject.Computer.FileSystem.CopyFile(foundfile, Application.StartupPath + "\" + MyProject.Computer.FileSystem.GetName(foundfile), True)
+        						For Each foundfile As String In Global.WindowsApplication1.My.MyProject.Computer.FileSystem.GetFiles(ProjDir)
+        							Global.WindowsApplication1.My.MyProject.Computer.FileSystem.CopyFile(foundfile, Application.StartupPath + "\" + Global.WindowsApplication1.My.MyProject.Computer.FileSystem.GetName(foundfile), True)
         						Next
         					Finally
-        						Dim enumerator As IEnumerator(Of String)
-        						If enumerator IsNot Nothing Then
-        							enumerator.Dispose()
-        						End If
         					End Try
         				Catch ex As Exception
         					MessageBox.Show("Cannot copy file on disk. Original error: " + ex.Message)
@@ -1057,7 +1055,7 @@ Namespace WindowsApplication1
         				End Select
         				Me.SaveToolStripMenuItem.Enabled = True
         				Me.CloseProjectToolStripMenuItem.Enabled = True
-        				MyBase.Text = "Robot Control - " + MyProject.Computer.FileSystem.GetName(OpenFileDialog.FileName)
+        				MyBase.Text = "Robot Control - " + Global.WindowsApplication1.My.MyProject.Computer.FileSystem.GetName(OpenFileDialog.FileName)
         				Positioncal.ProjLoad = True
         			End If
         		End Sub

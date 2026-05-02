@@ -929,9 +929,9 @@ Namespace WindowsApplication1
 			Dim form2rect As Rectangle = New Rectangle(50, 100, 694, 440)
 			If Me.CurrPosStat.Checked Then
 				Interaction.MsgBox("Please bring the journal to TDC position and the robot to its desired location before uploading", MsgBoxStyle.Exclamation, Nothing)
-				MyProject.Forms.Posıtıonupload.DesktopBounds = form2rect
-				MyProject.Forms.Posıtıonupload.ShowDialog()
-				If MyProject.Forms.Posıtıonupload.DialogResult = DialogResult.OK Then
+				Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.DesktopBounds = form2rect
+				Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.ShowDialog()
+				If Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.DialogResult = DialogResult.OK Then
 					Positioncal.CurrPos = 1S
 					Positioncal.WorkXAxisOffset = Positioncal.Position(0, 0)
 					Positioncal.WorkYAxisTilt = Positioncal.Position(4, 0)

@@ -12,7 +12,7 @@ Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.CompilerServices
 
-Namespace WindowsApplication1.My
+Namespace My
 	' Token: 0x02000004 RID: 4
 	<GeneratedCode("MyTemplate", "8.0.0.0")>
 	<HideModuleName()>

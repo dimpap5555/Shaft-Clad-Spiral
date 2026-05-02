@@ -796,9 +796,9 @@ Namespace WindowsApplication1
 		Private Sub CurrPosStat_Click(sender As Object, e As EventArgs)
 			Dim form2rect As Rectangle = New Rectangle(50, 100, 694, 440)
 			If Me.CurrPosStat.Checked Then
-				MyProject.Forms.Posıtıonupload.DesktopBounds = form2rect
-				MyProject.Forms.Posıtıonupload.ShowDialog()
-				If MyProject.Forms.Posıtıonupload.DialogResult = DialogResult.OK Then
+				Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.DesktopBounds = form2rect
+				Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.ShowDialog()
+				If Global.WindowsApplication1.My.MyProject.Forms.Posıtıonupload.DialogResult = DialogResult.OK Then
 					Positioncal.CurrPos = 1S
 					Me.Tooloffsettxt.Enabled = False
 					Positioncal.WorkXAxisOffset = Positioncal.Position(0, 0)

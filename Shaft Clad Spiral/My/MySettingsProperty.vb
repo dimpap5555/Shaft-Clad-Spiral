@@ -5,7 +5,7 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.CompilerServices
 
-Namespace WindowsApplication1.My
+Namespace My
 	' Token: 0x02000017 RID: 23
 	<CompilerGenerated()>
 	<HideModuleName()>

@@ -8,7 +8,7 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.CompilerServices
 
-Namespace WindowsApplication1.My.Resources
+Namespace My.Resources
 	''' <summary>
 	'''   A strongly-typed resource class, for looking up localized strings, etc.
 	''' </summary>

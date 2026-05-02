@@ -6,7 +6,7 @@ Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.ApplicationServices
 
-Namespace WindowsApplication1.My
+Namespace My
 	' Token: 0x02000002 RID: 2
 	<EditorBrowsable(EditorBrowsableState.Never)>
 	<GeneratedCode("MyTemplate", "8.0.0.0")>
