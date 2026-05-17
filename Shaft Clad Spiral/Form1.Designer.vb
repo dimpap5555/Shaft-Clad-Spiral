@@ -21,439 +21,440 @@ Partial Class Form1
 
     <DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        components = New Container()
-        MenuStrip1 = New MenuStrip()
-        FileToolStripMenuItem = New ToolStripMenuItem()
-        OpenProjectToolStripMenuItem1 = New ToolStripMenuItem()
-        SaveToolStripMenuItem = New ToolStripMenuItem()
-        SaveAsToolStripMenuItem = New ToolStripMenuItem()
-        CloseProjectToolStripMenuItem = New ToolStripMenuItem()
-        ConnectionSettingsToolStripMenuItem = New ToolStripMenuItem()
-        MisselaneousSettingsToolStripMenuItem = New ToolStripMenuItem()
-        ExitToolStripMenuItem = New ToolStripMenuItem()
-        HelpToolStripMenuItem = New ToolStripMenuItem()
-        HelpToolStripMenuItem1 = New ToolStripMenuItem()
-        AboutToolStripMenuItem = New ToolStripMenuItem()
-        processcycle = New ComboBox()
-        Label1 = New Label()
-        Quitbtn = New Button()
-        connect = New Button()
-        GroupBox1 = New GroupBox()
-        Offlinecheck = New CheckBox()
-        Countdown = New Label()
-        GroupBox2 = New GroupBox()
-        Label7 = New Label()
-        Label6 = New Label()
-        RZCoord = New TextBox()
-        RYCoord = New TextBox()
-        Label5 = New Label()
-        RXCoord = New TextBox()
-        Label4 = New Label()
-        ZCoord = New TextBox()
-        Label3 = New Label()
-        YCoord = New TextBox()
-        Label2 = New Label()
-        XCoord = New TextBox()
-        Progress = New Label()
-        ProgressBar = New ProgressBar()
-        hold = New Button()
-        run = New Button()
-        Download = New Button()
-        GroupBox3 = New GroupBox()
-        GroupBox4 = New GroupBox()
-        Procsetupbtn = New Button()
-        Timer1 = New Timer(components)
-        MenuStrip1.SuspendLayout()
-        GroupBox1.SuspendLayout()
-        GroupBox2.SuspendLayout()
-        GroupBox3.SuspendLayout()
-        GroupBox4.SuspendLayout()
-        SuspendLayout()
-        ' 
-        ' MenuStrip1
-        ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, HelpToolStripMenuItem})
-        MenuStrip1.Location = New Point(0, 0)
-        MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(362, 24)
-        MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1"
-        ' 
-        ' FileToolStripMenuItem
-        ' 
-        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {OpenProjectToolStripMenuItem1, SaveToolStripMenuItem, SaveAsToolStripMenuItem, CloseProjectToolStripMenuItem, ConnectionSettingsToolStripMenuItem, MisselaneousSettingsToolStripMenuItem, ExitToolStripMenuItem})
-        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        FileToolStripMenuItem.Size = New Size(37, 20)
-        FileToolStripMenuItem.Text = "File"
-        ' 
-        ' OpenProjectToolStripMenuItem1
-        ' 
-        OpenProjectToolStripMenuItem1.Name = "OpenProjectToolStripMenuItem1"
-        OpenProjectToolStripMenuItem1.Size = New Size(191, 22)
-        OpenProjectToolStripMenuItem1.Text = "Open Project"
-        ' 
-        ' SaveToolStripMenuItem
-        ' 
-        SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        SaveToolStripMenuItem.Size = New Size(191, 22)
-        SaveToolStripMenuItem.Text = "Save Project"
-        ' 
-        ' SaveAsToolStripMenuItem
-        ' 
-        SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        SaveAsToolStripMenuItem.Size = New Size(191, 22)
-        SaveAsToolStripMenuItem.Text = "Save Project As"
-        ' 
-        ' CloseProjectToolStripMenuItem
-        ' 
-        CloseProjectToolStripMenuItem.Name = "CloseProjectToolStripMenuItem"
-        CloseProjectToolStripMenuItem.Size = New Size(191, 22)
-        CloseProjectToolStripMenuItem.Text = "Close Project"
-        ' 
-        ' ConnectionSettingsToolStripMenuItem
-        ' 
-        ConnectionSettingsToolStripMenuItem.Name = "ConnectionSettingsToolStripMenuItem"
-        ConnectionSettingsToolStripMenuItem.Size = New Size(191, 22)
-        ConnectionSettingsToolStripMenuItem.Text = "Connection Settings"
-        ' 
-        ' MisselaneousSettingsToolStripMenuItem
-        ' 
-        MisselaneousSettingsToolStripMenuItem.Name = "MisselaneousSettingsToolStripMenuItem"
-        MisselaneousSettingsToolStripMenuItem.Size = New Size(191, 22)
-        MisselaneousSettingsToolStripMenuItem.Text = "Miscelaneous Settings"
-        ' 
-        ' ExitToolStripMenuItem
-        ' 
-        ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        ExitToolStripMenuItem.Size = New Size(191, 22)
-        ExitToolStripMenuItem.Text = "Exit"
-        ' 
-        ' HelpToolStripMenuItem
-        ' 
-        HelpToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {HelpToolStripMenuItem1, AboutToolStripMenuItem})
-        HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        HelpToolStripMenuItem.Size = New Size(44, 20)
-        HelpToolStripMenuItem.Text = "Help"
-        ' 
-        ' HelpToolStripMenuItem1
-        ' 
-        HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
-        HelpToolStripMenuItem1.Size = New Size(107, 22)
-        HelpToolStripMenuItem1.Text = "Help"
-        ' 
-        ' AboutToolStripMenuItem
-        ' 
-        AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New Size(107, 22)
-        AboutToolStripMenuItem.Text = "About"
-        ' 
-        ' processcycle
-        ' 
-        processcycle.FormattingEnabled = True
-        processcycle.Location = New Point(70, 259)
-        processcycle.Name = "processcycle"
-        processcycle.Size = New Size(210, 21)
-        processcycle.TabIndex = 0
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        Label1.Location = New Point(80, 236)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(182, 20)
-        Label1.TabIndex = 2
-        Label1.Text = "Choose Type of Cycle"
-        ' 
-        ' Quitbtn
-        ' 
-        Quitbtn.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        Quitbtn.Location = New Point(130, 556)
-        Quitbtn.Name = "Quitbtn"
-        Quitbtn.Size = New Size(85, 26)
-        Quitbtn.TabIndex = 1
-        Quitbtn.Text = "Quit"
-        Quitbtn.TextAlign = ContentAlignment.TopCenter
-        Quitbtn.UseVisualStyleBackColor = True
-        ' 
-        ' connect
-        ' 
-        connect.FlatStyle = FlatStyle.Popup
-        connect.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        connect.ForeColor = Color.Red
-        connect.Location = New Point(41, 19)
-        connect.Name = "connect"
-        connect.Size = New Size(127, 26)
-        connect.TabIndex = 0
-        connect.Text = "Disconnected"
-        connect.TextAlign = ContentAlignment.TopCenter
-        connect.UseVisualStyleBackColor = True
-        ' 
-        ' GroupBox1
-        ' 
-        GroupBox1.Controls.Add(Offlinecheck)
-        GroupBox1.Controls.Add(Countdown)
-        GroupBox1.Controls.Add(connect)
-        GroupBox1.Location = New Point(71, 42)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(209, 98)
-        GroupBox1.TabIndex = 22
-        GroupBox1.TabStop = False
-        GroupBox1.Text = "Connection"
-        ' 
-        ' Offlinecheck
-        ' 
-        Offlinecheck.AutoSize = True
-        Offlinecheck.Location = New Point(64, 70)
-        Offlinecheck.Name = "Offlinecheck"
-        Offlinecheck.Size = New Size(80, 17)
-        Offlinecheck.TabIndex = 2
-        Offlinecheck.Text = "Stay Offline"
-        Offlinecheck.UseVisualStyleBackColor = True
-        ' 
-        ' Countdown
-        ' 
-        Countdown.AutoSize = True
-        Countdown.Location = New Point(58, 52)
-        Countdown.Name = "Countdown"
-        Countdown.Size = New Size(92, 13)
-        Countdown.TabIndex = 1
-        Countdown.Text = "Connecting in 10s"
-        ' 
-        ' GroupBox2
-        ' 
-        GroupBox2.Controls.Add(Label7)
-        GroupBox2.Controls.Add(Label6)
-        GroupBox2.Controls.Add(RZCoord)
-        GroupBox2.Controls.Add(RYCoord)
-        GroupBox2.Controls.Add(Label5)
-        GroupBox2.Controls.Add(RXCoord)
-        GroupBox2.Controls.Add(Label4)
-        GroupBox2.Controls.Add(ZCoord)
-        GroupBox2.Controls.Add(Label3)
-        GroupBox2.Controls.Add(YCoord)
-        GroupBox2.Controls.Add(Label2)
-        GroupBox2.Controls.Add(XCoord)
-        GroupBox2.Controls.Add(Progress)
-        GroupBox2.Controls.Add(ProgressBar)
-        GroupBox2.Controls.Add(hold)
-        GroupBox2.Controls.Add(run)
-        GroupBox2.Location = New Point(20, 392)
-        GroupBox2.Name = "GroupBox2"
-        GroupBox2.Size = New Size(321, 158)
-        GroupBox2.TabIndex = 23
-        GroupBox2.TabStop = False
-        GroupBox2.Text = "Program Status"
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Location = New Point(257, 106)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(49, 13)
-        Label7.TabIndex = 35
-        Label7.Text = "Rz (Deg)"
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Location = New Point(210, 106)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(49, 13)
-        Label6.TabIndex = 34
-        Label6.Text = "Ry (Deg)"
-        ' 
-        ' RZCoord
-        ' 
-        RZCoord.Location = New Point(260, 122)
-        RZCoord.Name = "RZCoord"
-        RZCoord.Size = New Size(43, 20)
-        RZCoord.TabIndex = 32
-        ' 
-        ' RYCoord
-        ' 
-        RYCoord.Location = New Point(212, 122)
-        RYCoord.Name = "RYCoord"
-        RYCoord.Size = New Size(43, 20)
-        RYCoord.TabIndex = 30
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Location = New Point(161, 106)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(49, 13)
-        Label5.TabIndex = 29
-        Label5.Text = "Rx (Deg)"
-        ' 
-        ' RXCoord
-        ' 
-        RXCoord.Location = New Point(164, 122)
-        RXCoord.Name = "RXCoord"
-        RXCoord.Size = New Size(43, 20)
-        RXCoord.TabIndex = 28
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(118, 106)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(39, 13)
-        Label4.TabIndex = 27
-        Label4.Text = "Z (mm)"
-        ' 
-        ' ZCoord
-        ' 
-        ZCoord.Location = New Point(115, 122)
-        ZCoord.Name = "ZCoord"
-        ZCoord.Size = New Size(43, 20)
-        ZCoord.TabIndex = 26
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(68, 106)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(39, 13)
-        Label3.TabIndex = 25
-        Label3.Text = "Y (mm)"
-        ' 
-        ' YCoord
-        ' 
-        YCoord.Location = New Point(65, 122)
-        YCoord.Name = "YCoord"
-        YCoord.Size = New Size(43, 20)
-        YCoord.TabIndex = 24
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(19, 106)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(39, 13)
-        Label2.TabIndex = 23
-        Label2.Text = "X (mm)"
-        ' 
-        ' XCoord
-        ' 
-        XCoord.Location = New Point(16, 122)
-        XCoord.Name = "XCoord"
-        XCoord.Size = New Size(43, 20)
-        XCoord.TabIndex = 22
-        ' 
-        ' Progress
-        ' 
-        Progress.AutoSize = True
-        Progress.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        Progress.Location = New Point(90, 63)
-        Progress.Name = "Progress"
-        Progress.Size = New Size(123, 15)
-        Progress.TabIndex = 21
-        Progress.Text = "Program Progress"
-        ' 
-        ' ProgressBar
-        ' 
-        ProgressBar.AccessibleName = ""
-        ProgressBar.Location = New Point(66, 80)
-        ProgressBar.Name = "ProgressBar"
-        ProgressBar.Size = New Size(178, 16)
-        ProgressBar.TabIndex = 20
-        ' 
-        ' hold
-        ' 
-        hold.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        hold.Location = New Point(166, 29)
-        hold.Name = "hold"
-        hold.Size = New Size(85, 26)
-        hold.TabIndex = 19
-        hold.Text = "Hold"
-        hold.TextAlign = ContentAlignment.TopCenter
-        hold.UseVisualStyleBackColor = True
-        ' 
-        ' run
-        ' 
-        run.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        run.Location = New Point(59, 29)
-        run.Name = "run"
-        run.Size = New Size(85, 26)
-        run.TabIndex = 18
-        run.TabStop = False
-        run.Text = "Running"
-        run.TextAlign = ContentAlignment.TopCenter
-        run.UseVisualStyleBackColor = True
-        ' 
-        ' Download
-        ' 
-        Download.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        Download.Location = New Point(56, 28)
-        Download.Name = "Download"
-        Download.Size = New Size(91, 26)
-        Download.TabIndex = 0
-        Download.Text = "Download"
-        Download.TextAlign = ContentAlignment.TopCenter
-        Download.UseVisualStyleBackColor = True
-        ' 
-        ' GroupBox3
-        ' 
-        GroupBox3.Controls.Add(Download)
-        GroupBox3.Location = New Point(71, 299)
-        GroupBox3.Name = "GroupBox3"
-        GroupBox3.Size = New Size(209, 76)
-        GroupBox3.TabIndex = 25
-        GroupBox3.TabStop = False
-        GroupBox3.Text = "Program/Positions Download"
-        ' 
-        ' GroupBox4
-        ' 
-        GroupBox4.Controls.Add(Procsetupbtn)
-        GroupBox4.Location = New Point(71, 146)
-        GroupBox4.Name = "GroupBox4"
-        GroupBox4.Size = New Size(209, 76)
-        GroupBox4.TabIndex = 26
-        GroupBox4.TabStop = False
-        GroupBox4.Text = "Process Parameters"
-        ' 
-        ' Procsetupbtn
-        ' 
-        Procsetupbtn.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 161)
-        Procsetupbtn.Location = New Point(56, 29)
-        Procsetupbtn.Name = "Procsetupbtn"
-        Procsetupbtn.Size = New Size(89, 26)
-        Procsetupbtn.TabIndex = 0
-        Procsetupbtn.Text = "Setup"
-        Procsetupbtn.TextAlign = ContentAlignment.TopCenter
-        Procsetupbtn.UseVisualStyleBackColor = True
-        ' 
-        ' Timer1
-        ' 
-        Timer1.Interval = 1000
-        ' 
-        ' Form1
-        ' 
-        AutoScaleDimensions = New SizeF(6.0F, 13.0F)
-        AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(362, 599)
-        Controls.Add(GroupBox4)
-        Controls.Add(processcycle)
-        Controls.Add(Label1)
-        Controls.Add(GroupBox3)
-        Controls.Add(GroupBox2)
-        Controls.Add(GroupBox1)
-        Controls.Add(Quitbtn)
-        Controls.Add(MenuStrip1)
-        MainMenuStrip = MenuStrip1
-        Name = "Form1"
-        Text = "Robot Control"
-        MenuStrip1.ResumeLayout(False)
-        MenuStrip1.PerformLayout()
-        GroupBox1.ResumeLayout(False)
-        GroupBox1.PerformLayout()
-        GroupBox2.ResumeLayout(False)
-        GroupBox2.PerformLayout()
-        GroupBox3.ResumeLayout(False)
-        GroupBox4.ResumeLayout(False)
-        ResumeLayout(False)
-        PerformLayout()
+        Me.components = New System.ComponentModel.Container()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenProjectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CloseProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConnectionSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MisselaneousSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.processcycle = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Quitbtn = New System.Windows.Forms.Button()
+        Me.connect = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Offlinecheck = New System.Windows.Forms.CheckBox()
+        Me.Countdown = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.RZCoord = New System.Windows.Forms.TextBox()
+        Me.RYCoord = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.RXCoord = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ZCoord = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.YCoord = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.XCoord = New System.Windows.Forms.TextBox()
+        Me.Progress = New System.Windows.Forms.Label()
+        Me.ProgressBar = New System.Windows.Forms.ProgressBar()
+        Me.hold = New System.Windows.Forms.Button()
+        Me.run = New System.Windows.Forms.Button()
+        Me.Download = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Procsetupbtn = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.MenuStrip1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(362, 24)
+        Me.MenuStrip1.TabIndex = 0
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenProjectToolStripMenuItem1, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.CloseProjectToolStripMenuItem, Me.ConnectionSettingsToolStripMenuItem, Me.MisselaneousSettingsToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "File"
+        '
+        'OpenProjectToolStripMenuItem1
+        '
+        Me.OpenProjectToolStripMenuItem1.Name = "OpenProjectToolStripMenuItem1"
+        Me.OpenProjectToolStripMenuItem1.Size = New System.Drawing.Size(191, 22)
+        Me.OpenProjectToolStripMenuItem1.Text = "Open Project"
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.SaveToolStripMenuItem.Text = "Save Project"
+        '
+        'SaveAsToolStripMenuItem
+        '
+        Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.SaveAsToolStripMenuItem.Text = "Save Project As"
+        '
+        'CloseProjectToolStripMenuItem
+        '
+        Me.CloseProjectToolStripMenuItem.Name = "CloseProjectToolStripMenuItem"
+        Me.CloseProjectToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.CloseProjectToolStripMenuItem.Text = "Close Project"
+        '
+        'ConnectionSettingsToolStripMenuItem
+        '
+        Me.ConnectionSettingsToolStripMenuItem.Name = "ConnectionSettingsToolStripMenuItem"
+        Me.ConnectionSettingsToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ConnectionSettingsToolStripMenuItem.Text = "Connection Settings"
+        '
+        'MisselaneousSettingsToolStripMenuItem
+        '
+        Me.MisselaneousSettingsToolStripMenuItem.Name = "MisselaneousSettingsToolStripMenuItem"
+        Me.MisselaneousSettingsToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.MisselaneousSettingsToolStripMenuItem.Text = "Miscelaneous Settings"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpToolStripMenuItem1, Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'HelpToolStripMenuItem1
+        '
+        Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
+        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(107, 22)
+        Me.HelpToolStripMenuItem1.Text = "Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'processcycle
+        '
+        Me.processcycle.FormattingEnabled = True
+        Me.processcycle.Location = New System.Drawing.Point(70, 259)
+        Me.processcycle.Name = "processcycle"
+        Me.processcycle.Size = New System.Drawing.Size(210, 21)
+        Me.processcycle.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Label1.Location = New System.Drawing.Point(80, 236)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(182, 20)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Choose Type of Cycle"
+        '
+        'Quitbtn
+        '
+        Me.Quitbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Quitbtn.Location = New System.Drawing.Point(130, 556)
+        Me.Quitbtn.Name = "Quitbtn"
+        Me.Quitbtn.Size = New System.Drawing.Size(85, 26)
+        Me.Quitbtn.TabIndex = 1
+        Me.Quitbtn.Text = "Quit"
+        Me.Quitbtn.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Quitbtn.UseVisualStyleBackColor = True
+        '
+        'connect
+        '
+        Me.connect.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.connect.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.connect.ForeColor = System.Drawing.Color.Red
+        Me.connect.Location = New System.Drawing.Point(41, 19)
+        Me.connect.Name = "connect"
+        Me.connect.Size = New System.Drawing.Size(127, 26)
+        Me.connect.TabIndex = 0
+        Me.connect.Text = "Disconnected"
+        Me.connect.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.connect.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Offlinecheck)
+        Me.GroupBox1.Controls.Add(Me.Countdown)
+        Me.GroupBox1.Controls.Add(Me.connect)
+        Me.GroupBox1.Location = New System.Drawing.Point(71, 42)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(209, 98)
+        Me.GroupBox1.TabIndex = 22
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Connection"
+        '
+        'Offlinecheck
+        '
+        Me.Offlinecheck.AutoSize = True
+        Me.Offlinecheck.Location = New System.Drawing.Point(64, 70)
+        Me.Offlinecheck.Name = "Offlinecheck"
+        Me.Offlinecheck.Size = New System.Drawing.Size(80, 17)
+        Me.Offlinecheck.TabIndex = 2
+        Me.Offlinecheck.Text = "Stay Offline"
+        Me.Offlinecheck.UseVisualStyleBackColor = True
+        '
+        'Countdown
+        '
+        Me.Countdown.AutoSize = True
+        Me.Countdown.Location = New System.Drawing.Point(58, 52)
+        Me.Countdown.Name = "Countdown"
+        Me.Countdown.Size = New System.Drawing.Size(92, 13)
+        Me.Countdown.TabIndex = 1
+        Me.Countdown.Text = "Connecting in 10s"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.RZCoord)
+        Me.GroupBox2.Controls.Add(Me.RYCoord)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.RXCoord)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.ZCoord)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.YCoord)
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.XCoord)
+        Me.GroupBox2.Controls.Add(Me.Progress)
+        Me.GroupBox2.Controls.Add(Me.ProgressBar)
+        Me.GroupBox2.Controls.Add(Me.hold)
+        Me.GroupBox2.Controls.Add(Me.run)
+        Me.GroupBox2.Location = New System.Drawing.Point(20, 392)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(321, 158)
+        Me.GroupBox2.TabIndex = 23
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Program Status"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(257, 106)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(49, 13)
+        Me.Label7.TabIndex = 35
+        Me.Label7.Text = "Rz (Deg)"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(210, 106)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(49, 13)
+        Me.Label6.TabIndex = 34
+        Me.Label6.Text = "Ry (Deg)"
+        '
+        'RZCoord
+        '
+        Me.RZCoord.Location = New System.Drawing.Point(260, 122)
+        Me.RZCoord.Name = "RZCoord"
+        Me.RZCoord.Size = New System.Drawing.Size(43, 20)
+        Me.RZCoord.TabIndex = 32
+        '
+        'RYCoord
+        '
+        Me.RYCoord.Location = New System.Drawing.Point(212, 122)
+        Me.RYCoord.Name = "RYCoord"
+        Me.RYCoord.Size = New System.Drawing.Size(43, 20)
+        Me.RYCoord.TabIndex = 30
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(161, 106)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(49, 13)
+        Me.Label5.TabIndex = 29
+        Me.Label5.Text = "Rx (Deg)"
+        '
+        'RXCoord
+        '
+        Me.RXCoord.Location = New System.Drawing.Point(164, 122)
+        Me.RXCoord.Name = "RXCoord"
+        Me.RXCoord.Size = New System.Drawing.Size(43, 20)
+        Me.RXCoord.TabIndex = 28
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(118, 106)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(39, 13)
+        Me.Label4.TabIndex = 27
+        Me.Label4.Text = "Z (mm)"
+        '
+        'ZCoord
+        '
+        Me.ZCoord.Location = New System.Drawing.Point(115, 122)
+        Me.ZCoord.Name = "ZCoord"
+        Me.ZCoord.Size = New System.Drawing.Size(43, 20)
+        Me.ZCoord.TabIndex = 26
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(68, 106)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(39, 13)
+        Me.Label3.TabIndex = 25
+        Me.Label3.Text = "Y (mm)"
+        '
+        'YCoord
+        '
+        Me.YCoord.Location = New System.Drawing.Point(65, 122)
+        Me.YCoord.Name = "YCoord"
+        Me.YCoord.Size = New System.Drawing.Size(43, 20)
+        Me.YCoord.TabIndex = 24
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(19, 106)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 23
+        Me.Label2.Text = "X (mm)"
+        '
+        'XCoord
+        '
+        Me.XCoord.Location = New System.Drawing.Point(16, 122)
+        Me.XCoord.Name = "XCoord"
+        Me.XCoord.Size = New System.Drawing.Size(43, 20)
+        Me.XCoord.TabIndex = 22
+        '
+        'Progress
+        '
+        Me.Progress.AutoSize = True
+        Me.Progress.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Progress.Location = New System.Drawing.Point(90, 63)
+        Me.Progress.Name = "Progress"
+        Me.Progress.Size = New System.Drawing.Size(123, 15)
+        Me.Progress.TabIndex = 21
+        Me.Progress.Text = "Program Progress"
+        '
+        'ProgressBar
+        '
+        Me.ProgressBar.AccessibleName = ""
+        Me.ProgressBar.Location = New System.Drawing.Point(66, 80)
+        Me.ProgressBar.Name = "ProgressBar"
+        Me.ProgressBar.Size = New System.Drawing.Size(178, 16)
+        Me.ProgressBar.TabIndex = 20
+        '
+        'hold
+        '
+        Me.hold.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.hold.Location = New System.Drawing.Point(166, 29)
+        Me.hold.Name = "hold"
+        Me.hold.Size = New System.Drawing.Size(85, 26)
+        Me.hold.TabIndex = 19
+        Me.hold.Text = "Hold"
+        Me.hold.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.hold.UseVisualStyleBackColor = True
+        '
+        'run
+        '
+        Me.run.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.run.Location = New System.Drawing.Point(59, 29)
+        Me.run.Name = "run"
+        Me.run.Size = New System.Drawing.Size(85, 26)
+        Me.run.TabIndex = 18
+        Me.run.TabStop = False
+        Me.run.Text = "Running"
+        Me.run.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.run.UseVisualStyleBackColor = True
+        '
+        'Download
+        '
+        Me.Download.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Download.Location = New System.Drawing.Point(56, 28)
+        Me.Download.Name = "Download"
+        Me.Download.Size = New System.Drawing.Size(91, 26)
+        Me.Download.TabIndex = 0
+        Me.Download.Text = "Download"
+        Me.Download.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Download.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Download)
+        Me.GroupBox3.Location = New System.Drawing.Point(71, 299)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(209, 76)
+        Me.GroupBox3.TabIndex = 25
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Program/Positions Download"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Procsetupbtn)
+        Me.GroupBox4.Location = New System.Drawing.Point(71, 146)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(209, 76)
+        Me.GroupBox4.TabIndex = 26
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Process Parameters"
+        '
+        'Procsetupbtn
+        '
+        Me.Procsetupbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Procsetupbtn.Location = New System.Drawing.Point(56, 29)
+        Me.Procsetupbtn.Name = "Procsetupbtn"
+        Me.Procsetupbtn.Size = New System.Drawing.Size(89, 26)
+        Me.Procsetupbtn.TabIndex = 0
+        Me.Procsetupbtn.Text = "Setup"
+        Me.Procsetupbtn.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Procsetupbtn.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
+        '
+        'Form1
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(362, 599)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.processcycle)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Quitbtn)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
+        Me.Name = "Form1"
+        Me.Text = "Robot Control"
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
     End Sub
 
     Private components As IContainer

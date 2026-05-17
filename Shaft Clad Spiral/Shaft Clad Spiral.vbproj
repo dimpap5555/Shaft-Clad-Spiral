@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Shaft Clad Spiral.ico</ApplicationIcon>
-    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+    <StartupObject>WindowsApplication1.Form1</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -177,6 +177,9 @@
     <EmbeddedResource Include="ConnectionSettings.resources" />
     <EmbeddedResource Include="CRPARAM.resources" />
     <EmbeddedResource Include="Form1.resources" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GRVPARAM.resources" />
     <EmbeddedResource Include="IObox.resources" />
     <EmbeddedResource Include="KEYPARAM.resources" />

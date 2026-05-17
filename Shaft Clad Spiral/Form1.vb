@@ -822,6 +822,9 @@ Partial Public Class Form1
     End Sub
 
     Private Sub Procsetupbtn_Click(sender As Object, e As EventArgs) Handles Procsetupbtn.Click
+
+        Me.processcycle.Enabled = True
+
         Dim form2rect As Rectangle = New Rectangle(50, 100, 580, 440)
         MyProject.Forms.Processsetup.DesktopBounds = form2rect
         MyProject.Forms.Processsetup.ShowDialog()
